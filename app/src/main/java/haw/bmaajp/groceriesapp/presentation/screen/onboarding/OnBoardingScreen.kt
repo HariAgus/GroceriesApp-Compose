@@ -12,17 +12,16 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
 fun OnBoardingScreen() {
-
+    OnBoarding(modifier = Modifier.fillMaxSize())
 }
 
 @Composable
@@ -36,45 +35,45 @@ fun OnBoarding(
         Image(
             modifier = Modifier.fillMaxSize(),
             painter = painterResource(id = R.drawable.img_onboarding),
-            contentDescription = "Image On Boarding"
+            contentDescription = stringResource(R.string.image_on_boarding)
         )
         Surface(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
-                .padding(bottom = DIMENS_90_DP),
+                .padding(bottom = DIMENS_90dp),
             color = Color.Transparent
         ) {
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
-                    text = "Welcome to \n our store",
+                    text = stringResource(id = R.string.welcom_to_store),
                     fontFamily = GilroyFontFamily,
                     fontWeight = FontWeight.SemiBold,
-                    fontSize = 49.sp,
+                    fontSize = TEXT_SIZE_49sp,
                     color = Color.White,
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    text = "Ger your groceries in as fast as one hour",
+                    text = stringResource(R.string.desc_welcome),
                     fontFamily = GilroyFontFamily,
                     fontWeight = FontWeight.Medium,
-                    fontSize = 16.sp,
+                    fontSize = TEXT_SIZE_16sp,
                     color = GrayTextColor,
                     textAlign = TextAlign.Center,
                 )
-                Spacer(modifier = Modifier.height(DIMENS_40_DP))
+                Spacer(modifier = Modifier.height(DIMENS_40dp))
                 Button(
-                    modifier = Modifier.size(width = 353.dp, height = 67.dp),
+                    modifier = Modifier.size(width = DIMENS_353dp, height = DIMENS_68dp),
                     onClick = { /*TODO*/ },
                     colors = ButtonDefaults.buttonColors(backgroundColor = Green),
-                    shape = RoundedCornerShape(DIMENS_12_DP)
+                    shape = RoundedCornerShape(DIMENS_12dp)
                 ) {
                     Text(
-                        text = "Get Started",
+                        text = stringResource(R.string.get_started),
                         fontFamily = GilroyFontFamily,
                         fontWeight = FontWeight.SemiBold,
-                        fontSize = 18.sp,
+                        fontSize = TEXT_SIZE_18sp,
                         color = Color.White
                     )
                 }
