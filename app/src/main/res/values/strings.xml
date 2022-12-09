@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">GroceriesApp</string>
+
+    <!-- Bottom Navigation Title -->
+    <string name="menu_shop">Shop</string>
+    <string name="menu_explore">Explore</string>
+    <string name="menu_cart">Cart</string>
+    <string name="menu_profile">Profile</string>
+    <string name="image_on_boarding">Image On Boarding</string>
+    <string name="welcom_to_store">Welcome to \n our store</string>
+    <string name="desc_welcome">Ger your groceries in as fast as one hour</string>
+    <string name="get_started">Get Started</string>
 </resources>
