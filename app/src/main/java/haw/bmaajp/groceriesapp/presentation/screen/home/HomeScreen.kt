@@ -8,7 +8,7 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import haw.bmaajp.groceriesapp.presentation.component.BottomBaGroceries
+import haw.bmaajp.groceriesapp.presentation.component.BottomBarPreview
 
 
 @Composable
@@ -21,7 +21,7 @@ fun Home(
     modifier: Modifier
 ) {
     Scaffold(
-        bottomBar = { BottomBaGroceries() }
+        bottomBar = { BottomBarPreview() }
     ) { innerPadding ->
         Column(
             modifier = modifier
