@@ -12,4 +12,6 @@
     <string name="get_started">Get Started</string>
     <string name="search_store">Search Store</string>
     <string name="image_slider">Image Slider</string>
+    <string name="image_product">Image Product</string>
+    <string name="add">Add</string>
 </resources>
