@@ -21,7 +21,7 @@ import haw.bmaajp.groceriesapp.ui.theme.DIMENS_12dp
 import haw.bmaajp.groceriesapp.ui.theme.Green
 
 @Composable
-fun BottomBaGroceries(
+fun BottomBar(
     modifier: Modifier = Modifier
 ) {
     BottomNavigation(
@@ -71,6 +71,6 @@ fun BottomBaGroceries(
 
 @Preview
 @Composable
-fun BottomBarGroceriesPreview() {
-    BottomBaGroceries()
+fun BottomBarPreview() {
+    BottomBar()
 }
