@@ -14,4 +14,5 @@
     <string name="image_slider">Image Slider</string>
     <string name="image_product">Image Product</string>
     <string name="add">Add</string>
+    <string name="image_category">Image Category</string>
 </resources>
