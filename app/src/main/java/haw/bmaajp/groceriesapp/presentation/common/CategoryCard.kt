@@ -60,7 +60,7 @@ fun CategoryCardPreview() {
         CategoryItem(
             title = "Frash Fruits\n" + "& Vegetable",
             image = R.drawable.category2,
-            background = BackgroundCategory2
+            background = BackgroundCategory3
         )
     )
 }
