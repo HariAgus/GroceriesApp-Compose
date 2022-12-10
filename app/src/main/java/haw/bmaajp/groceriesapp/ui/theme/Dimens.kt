@@ -18,6 +18,7 @@ val DIMENS_48dp = 48.dp
 val DIMENS_64dp = 64.dp
 val DIMENS_68dp = 68.dp
 val DIMENS_90dp = 90.dp
+val DIMENS_114dp = 114.dp
 val DIMENS_353dp = 353.dp
 
 /* Scale Independent */
