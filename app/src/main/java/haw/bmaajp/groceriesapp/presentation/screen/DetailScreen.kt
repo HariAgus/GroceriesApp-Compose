@@ -20,7 +20,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import haw.bmaajp.groceriesapp.R
-import haw.bmaajp.groceriesapp.model.ProductItem
+import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.presentation.common.SpacerDividerContent
 import haw.bmaajp.groceriesapp.presentation.component.RatingBar
 import haw.bmaajp.groceriesapp.ui.theme.*

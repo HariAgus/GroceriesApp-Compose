@@ -4,4 +4,10 @@
     <style name="Theme.GroceriesApp" parent="android:Theme.Material.Light.NoActionBar">
         <item name="android:statusBarColor">@color/purple_700</item>
     </style>
+
+    <style name="TextStyleWhiteSemiBold49sp">
+        <item name="android:fontFamily">@font/gilroy_bold</item>
+        <item name="android:textSize">49sp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
 </resources>

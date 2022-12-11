@@ -16,7 +16,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import haw.bmaajp.groceriesapp.R
-import haw.bmaajp.groceriesapp.model.CategoryItem
+import haw.bmaajp.groceriesapp.domain.model.CategoryItem
 import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
