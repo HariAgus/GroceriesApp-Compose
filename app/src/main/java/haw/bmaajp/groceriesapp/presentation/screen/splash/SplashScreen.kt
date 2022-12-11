@@ -20,9 +20,11 @@ fun SplashScreen() {
 }
 
 @Composable
-fun Splash() {
+fun Splash(
+    modifier: Modifier = Modifier
+) {
     Box(
-        modifier = Modifier
+        modifier = modifier
             .background(Green)
             .fillMaxSize(),
         contentAlignment = Alignment.Center
