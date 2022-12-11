@@ -16,4 +16,9 @@
     <string name="add">Add</string>
     <string name="image_category">Image Category</string>
     <string name="arrow_right">Arrow Right</string>
+    <string name="image_favorite">Image Favorite</string>
+    <string name="product_detail">Product Detail</string>
+    <string name="nutritions">Nutritions</string>
+    <string name="review">Review</string>
+    <string name="add_to_basket">Add To Basket</string>
 </resources>

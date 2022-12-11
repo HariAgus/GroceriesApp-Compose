@@ -8,6 +8,7 @@ val Purple700 = Color(0xFF3700B3)
 val Teal200 = Color(0xFF03DAC5)
 
 val GrayBackground = Color(0xFFF2F3F2)
+val GrayBackgroundSecond = Color(0xFFEBEBEB)
 val Black = Color(0xFF181725)
 val Green = Color(0xFF53B175)
 val GrayTextColor = Color(0xFFFCFCFC)

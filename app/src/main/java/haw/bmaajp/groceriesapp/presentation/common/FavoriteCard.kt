@@ -1,6 +1,5 @@
 package haw.bmaajp.groceriesapp.presentation.common
 
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
@@ -73,7 +72,8 @@ fun FavoriteCard(
                     fontFamily = GilroyFontFamily,
                     fontWeight = FontWeight.Bold,
                     color = Black,
-                    fontSize = TEXT_SIZE_16sp
+                    fontSize = TEXT_SIZE_16sp,
+                    modifier = Modifier.align(Alignment.CenterVertically)
                 )
 
                 Icon(
