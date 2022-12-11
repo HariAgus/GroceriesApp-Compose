@@ -51,7 +51,7 @@ fun FavoriteCard(
                     fontFamily = GilroyFontFamily,
                     fontWeight = FontWeight.Bold,
                     color = Black,
-                    fontSize = TEXT_SIZE_16sp
+                    fontSize = TEXT_SIZE_16sp,
                 )
 
                 Spacer(modifier = Modifier.height(DIMENS_6dp))
@@ -100,6 +100,7 @@ fun FavoriteCardPreview() {
             image = R.drawable.product10,
             unit = "7pcs, Priceg",
             price = 4.99,
+            nutritions = "100gr",
             review = 4.0
         )
     )
