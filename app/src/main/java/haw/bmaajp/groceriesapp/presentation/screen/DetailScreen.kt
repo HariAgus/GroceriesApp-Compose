@@ -10,7 +10,6 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
-import androidx.compose.material.icons.outlined.Favorite
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,6 +22,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.model.ProductItem
 import haw.bmaajp.groceriesapp.presentation.common.SpacerDividerContent
+import haw.bmaajp.groceriesapp.presentation.component.RatingBar
 import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
@@ -103,7 +103,7 @@ fun DetailContentDescription(
                 )
             }
             Icon(
-                imageVector = Icons.Outlined.Favorite,
+                painter = painterResource(id = R.drawable.ic_favorite_border),
                 contentDescription = stringResource(R.string.image_favorite),
                 modifier = Modifier.align(Alignment.CenterVertically)
             )
@@ -158,19 +158,20 @@ fun DetailContentDescription(
             )
 
             Card(
+                shape = RoundedCornerShape(DIMENS_6dp),
                 modifier = Modifier
                     .background(color = Color.Transparent)
                     .align(Alignment.CenterVertically)
             ) {
                 Text(
-                    text = "100gr",
+                    text = productItem.nutritions,
                     fontFamily = GilroyFontFamily,
                     fontWeight = FontWeight.SemiBold,
                     color = GraySecondTextColor,
                     fontSize = TEXT_SIZE_10sp,
                     modifier = Modifier
                         .background(color = GrayBackgroundSecond)
-                        .padding(DIMENS_8dp)
+                        .padding(DIMENS_4dp)
                 )
             }
 
@@ -198,13 +199,7 @@ fun DetailContentDescription(
                     .align(Alignment.CenterVertically)
             )
 
-            Card(
-                modifier = Modifier
-                    .background(color = Color.Transparent)
-                    .align(Alignment.CenterVertically)
-            ) {
-                // TODO: Create Rating Bar
-            }
+            RatingBar(rating = productItem.review)
 
             Spacer(modifier = Modifier.width(DIMENS_8dp))
 
@@ -250,6 +245,7 @@ fun DetailScreenPreview() {
             image = R.drawable.product2,
             unit = "7pcs, Priceg",
             price = 4.99,
+            nutritions = "100gr",
             review = 4.0
         )
     )

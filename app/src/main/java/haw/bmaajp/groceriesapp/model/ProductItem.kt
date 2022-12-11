@@ -7,5 +7,6 @@ data class ProductItem(
     val image: Int,
     val unit: String,
     val price: Double,
+    val nutritions: String,
     val review: Double
 )
