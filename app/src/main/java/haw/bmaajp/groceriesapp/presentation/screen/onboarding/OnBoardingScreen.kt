@@ -16,17 +16,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
-fun OnBoardingScreen() {
+fun OnBoardingScreen(navController: NavHostController) {
     OnBoarding(modifier = Modifier.fillMaxSize())
 }
 
 @Composable
 fun OnBoarding(
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     Box(
         modifier = modifier.fillMaxSize(),
@@ -52,7 +53,7 @@ fun OnBoarding(
                     fontWeight = FontWeight.SemiBold,
                     fontSize = TEXT_SIZE_49sp,
                     color = Color.White,
-                    textAlign = TextAlign.Center
+                    textAlign = TextAlign.Center,
                 )
                 Text(
                     text = stringResource(R.string.desc_welcome),
@@ -85,5 +86,5 @@ fun OnBoarding(
 @Preview
 @Composable
 fun OnBoardingPreview() {
-    OnBoarding(modifier = Modifier)
+    OnBoarding()
 }

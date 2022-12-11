@@ -8,17 +8,18 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavHostController
 import haw.bmaajp.groceriesapp.presentation.component.BottomBarPreview
 
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavHostController) {
     Home(modifier = Modifier)
 }
 
 @Composable
 fun Home(
-    modifier: Modifier
+    modifier: Modifier = Modifier
 ) {
     Scaffold(
         bottomBar = { BottomBarPreview() }
@@ -36,5 +37,5 @@ fun Home(
 @Preview
 @Composable
 fun HomeScreenPreview() {
-    HomeScreen()
+    Home()
 }

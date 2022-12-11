@@ -14,7 +14,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import haw.bmaajp.groceriesapp.R
-import haw.bmaajp.groceriesapp.model.BottomBarItem
+import haw.bmaajp.groceriesapp.domain.model.BottomBarItem
 import haw.bmaajp.groceriesapp.ui.theme.Black
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_10dp
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_12dp

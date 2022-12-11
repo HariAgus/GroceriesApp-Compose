@@ -1,4 +1,4 @@
-package haw.bmaajp.groceriesapp.model
+package haw.bmaajp.groceriesapp.domain.model
 
 data class ProductItem(
     val id: Int,

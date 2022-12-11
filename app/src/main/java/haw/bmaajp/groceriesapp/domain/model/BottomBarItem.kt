@@ -1,4 +1,4 @@
-package haw.bmaajp.groceriesapp.model
+package haw.bmaajp.groceriesapp.domain.model
 
 import androidx.compose.ui.graphics.vector.ImageVector
 
