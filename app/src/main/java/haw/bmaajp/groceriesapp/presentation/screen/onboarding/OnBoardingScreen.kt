@@ -1,5 +1,7 @@
 package haw.bmaajp.groceriesapp.presentation.screen.onboarding
 
+import android.content.Context
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,23 +13,44 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import haw.bmaajp.groceriesapp.R
+import haw.bmaajp.groceriesapp.navigation.Screen
 import haw.bmaajp.groceriesapp.ui.theme.*
 
+private fun mToast(context: Context) {
+    Toast.makeText(context, "This is a Sample Toast", Toast.LENGTH_LONG).show()
+}
+
 @Composable
-fun OnBoardingScreen(navController: NavHostController) {
-    OnBoarding(modifier = Modifier.fillMaxSize())
+fun OnBoardingScreen(
+    navController: NavHostController,
+    onBoardingViewModel: OnBoardingViewModel = hiltViewModel()
+) {
+    val mContext = LocalContext.current
+
+    OnBoarding(
+        modifier = Modifier.fillMaxSize(),
+        onClick = {
+            mToast(mContext)
+            navController.popBackStack()
+            navController.navigate(Screen.Home.route)
+            onBoardingViewModel.saveOnBoardingState(isCompleted = true)
+        })
 }
 
 @Composable
 fun OnBoarding(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
 ) {
     Box(
         modifier = modifier.fillMaxSize(),
@@ -36,7 +59,8 @@ fun OnBoarding(
         Image(
             modifier = Modifier.fillMaxSize(),
             painter = painterResource(id = R.drawable.img_onboarding),
-            contentDescription = stringResource(R.string.image_on_boarding)
+            contentDescription = stringResource(R.string.image_on_boarding),
+            contentScale = ContentScale.Crop
         )
         Surface(
             modifier = Modifier
@@ -65,10 +89,15 @@ fun OnBoarding(
                 )
                 Spacer(modifier = Modifier.height(DIMENS_40dp))
                 Button(
-                    modifier = Modifier.size(width = DIMENS_353dp, height = DIMENS_68dp),
-                    onClick = { /*TODO*/ },
+                    onClick = {
+                        onClick.invoke()
+                    },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(height = DIMENS_68dp)
+                        .padding(start = DIMENS_16dp, end = DIMENS_16dp),
                     colors = ButtonDefaults.buttonColors(backgroundColor = Green),
-                    shape = RoundedCornerShape(DIMENS_12dp)
+                    shape = RoundedCornerShape(DIMENS_12dp),
                 ) {
                     Text(
                         text = stringResource(R.string.get_started),
@@ -86,5 +115,5 @@ fun OnBoarding(
 @Preview
 @Composable
 fun OnBoardingPreview() {
-    OnBoarding()
+    OnBoarding(onClick = {})
 }
