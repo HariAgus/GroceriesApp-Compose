@@ -1,8 +1,10 @@
 package haw.bmaajp.groceriesapp.presentation.component
 
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
@@ -11,6 +13,7 @@ import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import haw.bmaajp.groceriesapp.R
@@ -25,12 +28,10 @@ fun BottomBar(
     modifier: Modifier = Modifier
 ) {
     BottomNavigation(
-        backgroundColor = MaterialTheme.colors.background,
-        contentColor = Green,
+        backgroundColor = Color.White,
+        contentColor = Color.Black,
         elevation = DIMENS_10dp,
-        modifier = modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(topStart = DIMENS_12dp, topEnd = DIMENS_12dp))
+        modifier = modifier.clip(RoundedCornerShape(topStart = DIMENS_12dp, topEnd = DIMENS_12dp))
     ) {
         val navigationItems = listOf(
             BottomBarItem(
@@ -62,7 +63,9 @@ fun BottomBar(
                     Text(text = item.title)
                 },
                 selected = item.title == navigationItems[0].title,
+                selectedContentColor = Green,
                 unselectedContentColor = Black,
+                alwaysShowLabel = true,
                 onClick = {}
             )
         }

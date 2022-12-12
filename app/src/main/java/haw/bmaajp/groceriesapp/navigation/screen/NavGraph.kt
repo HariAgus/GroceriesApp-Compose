@@ -1,4 +1,4 @@
-package haw.bmaajp.groceriesapp.navigation
+package haw.bmaajp.groceriesapp.navigation.screen
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController

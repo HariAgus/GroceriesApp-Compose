@@ -1,4 +1,4 @@
-package haw.bmaajp.groceriesapp.navigation
+package haw.bmaajp.groceriesapp.navigation.screen
 
 sealed class Screen(val route: String) {
 
