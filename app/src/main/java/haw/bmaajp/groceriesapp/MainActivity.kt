@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import haw.bmaajp.groceriesapp.navigation.SetupNavGraph
+import haw.bmaajp.groceriesapp.navigation.screen.SetupNavGraph
 import haw.bmaajp.groceriesapp.ui.theme.GroceriesAppTheme
 
 @AndroidEntryPoint

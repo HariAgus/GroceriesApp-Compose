@@ -1,76 +1,73 @@
 package haw.bmaajp.groceriesapp.presentation.component
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Person
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.material.BottomNavigation
+import androidx.compose.material.BottomNavigationItem
+import androidx.compose.material.Icon
+import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
-import haw.bmaajp.groceriesapp.R
-import haw.bmaajp.groceriesapp.domain.model.BottomBarItem
-import haw.bmaajp.groceriesapp.ui.theme.Black
-import haw.bmaajp.groceriesapp.ui.theme.DIMENS_10dp
-import haw.bmaajp.groceriesapp.ui.theme.DIMENS_12dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.currentBackStackEntryAsState
+import haw.bmaajp.groceriesapp.navigation.bottomnav.BottomNavItem
 import haw.bmaajp.groceriesapp.ui.theme.Green
 
 @Composable
 fun BottomBar(
+    navController: NavController,
     modifier: Modifier = Modifier
 ) {
+    val navigationItems = listOf(
+        BottomNavItem.Home,
+        BottomNavItem.Explore,
+        BottomNavItem.Cart,
+        BottomNavItem.About
+    )
+
     BottomNavigation(
-        backgroundColor = MaterialTheme.colors.background,
-        contentColor = Green,
-        elevation = DIMENS_10dp,
-        modifier = modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(topStart = DIMENS_12dp, topEnd = DIMENS_12dp))
+        backgroundColor = Color.White,
+        contentColor = Color.Black,
     ) {
-        val navigationItems = listOf(
-            BottomBarItem(
-                title = stringResource(id = R.string.menu_shop),
-                icon = Icons.Default.Home
-            ),
-            BottomBarItem(
-                title = stringResource(id = R.string.menu_explore),
-                icon = Icons.Default.Search
-            ),
-            BottomBarItem(
-                title = stringResource(id = R.string.menu_cart),
-                icon = Icons.Default.ShoppingCart
-            ),
-            BottomBarItem(
-                title = stringResource(id = R.string.menu_profile),
-                icon = Icons.Default.Person
-            )
-        )
-        navigationItems.map { item ->
+        val navBackStackEntry by navController.currentBackStackEntryAsState()
+        val currentRoute = navBackStackEntry?.destination?.route
+
+        navigationItems.forEach { item ->
             BottomNavigationItem(
                 icon = {
-                    Icon(
-                        imageVector = item.icon,
-                        contentDescription = item.title
-                    )
+                    Icon(imageVector = item.icon, contentDescription = item.title)
                 },
                 label = {
-                    Text(text = item.title)
+                    Text(
+                        text = item.title,
+                        fontWeight = FontWeight.SemiBold,
+                        color = if (currentRoute == item.route) {
+                            Green
+                        } else Color.Black.copy(0.4f)
+                    )
                 },
-                selected = item.title == navigationItems[0].title,
-                unselectedContentColor = Black,
-                onClick = {}
+                selectedContentColor = Green,
+                unselectedContentColor = Color.Black.copy(0.4f),
+                selected = currentRoute == item.route,
+                onClick = {
+                    navController.navigate(item.route) {
+                        navController.graph.startDestinationRoute?.let { screen_route ->
+                            popUpTo(screen_route) { saveState = true }
+                        }
+                        launchSingleTop = true
+                        restoreState = true
+                    }
+                }
             )
         }
+
     }
 }
 
 @Preview
 @Composable
 fun BottomBarPreview() {
-    BottomBar()
+    // BottomBar()
 }

@@ -23,7 +23,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import haw.bmaajp.groceriesapp.R
-import haw.bmaajp.groceriesapp.navigation.Screen
+import haw.bmaajp.groceriesapp.navigation.screen.Screen
 import haw.bmaajp.groceriesapp.ui.theme.*
 
 private fun mToast(context: Context) {
@@ -42,7 +42,7 @@ fun OnBoardingScreen(
         onClick = {
             mToast(mContext)
             navController.popBackStack()
-            navController.navigate(Screen.Home.route)
+            navController.navigate(Screen.Main.route)
             onBoardingViewModel.saveOnBoardingState(isCompleted = true)
         })
 }
