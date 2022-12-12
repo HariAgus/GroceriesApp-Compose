@@ -1,13 +1,20 @@
 package haw.bmaajp.groceriesapp.navigation.bottomnav
 
-sealed class BottomNavItem(val route: String) {
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.material.icons.filled.ShoppingCart
+import androidx.compose.ui.graphics.vector.ImageVector
 
-    object Home : BottomNavItem("home_screen")
+sealed class BottomNavItem(val route: String, val icon: ImageVector, val title: String) {
 
-    object Explore : BottomNavItem("explore_screen")
+    object Home : BottomNavItem("home_screen", Icons.Default.Home, "Shop")
 
-    object Cart : BottomNavItem("cart_screen")
+    object Explore : BottomNavItem("explore_screen", Icons.Default.Search, "Explore")
 
-    object About : BottomNavItem("about_screen")
+    object Cart : BottomNavItem("cart_screen", Icons.Default.ShoppingCart, "Cart")
+
+    object About : BottomNavItem("about_screen", Icons.Default.Person, "About")
 
 }

@@ -5,7 +5,7 @@
     <string name="menu_shop">Shop</string>
     <string name="menu_explore">Explore</string>
     <string name="menu_cart">Cart</string>
-    <string name="menu_profile">Profile</string>
+    <string name="menu_about">About</string>
     <string name="image_on_boarding">Image On Boarding</string>
     <string name="welcome_to_store">Welcome to \n our store</string>
     <string name="desc_welcome">Ger your groceries in as fast as one hour</string>
@@ -22,4 +22,5 @@
     <string name="review">Review</string>
     <string name="add_to_basket">Add To Basket</string>
     <string name="logo_app">Logo App</string>
+    <string name="shop">Shop</string>
 </resources>

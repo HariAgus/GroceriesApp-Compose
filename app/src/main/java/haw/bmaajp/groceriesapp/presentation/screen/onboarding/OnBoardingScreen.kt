@@ -42,7 +42,7 @@ fun OnBoardingScreen(
         onClick = {
             mToast(mContext)
             navController.popBackStack()
-            navController.navigate(Screen.Home.route)
+            navController.navigate(Screen.Main.route)
             onBoardingViewModel.saveOnBoardingState(isCompleted = true)
         })
 }

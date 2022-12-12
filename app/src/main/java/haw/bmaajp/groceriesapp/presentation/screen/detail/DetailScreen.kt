@@ -1,4 +1,4 @@
-package haw.bmaajp.groceriesapp.presentation.screen
+package haw.bmaajp.groceriesapp.presentation.screen.detail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
