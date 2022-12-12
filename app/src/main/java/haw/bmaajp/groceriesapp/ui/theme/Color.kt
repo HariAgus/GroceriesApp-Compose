@@ -13,6 +13,7 @@ val Black = Color(0xFF181725)
 val Green = Color(0xFF53B175)
 val GrayTextColor = Color(0xFFFCFCFC)
 val GraySecondTextColor = Color(0xFF7C7C7C)
+val GrayThirdTextColor = Color(0xFF4C4F4D)
 val GrayBorderStroke = Color(0xFFE2E2E2)
 val OrangeStarsColor = Color(0xFFF3603F)
 
