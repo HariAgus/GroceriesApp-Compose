@@ -1,4 +1,4 @@
-package haw.bmaajp.groceriesapp.presentation.common
+package haw.bmaajp.groceriesapp.presentation.common.card
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -81,12 +81,14 @@ fun ProductCard(
                 )
 
                 Button(
-                    colors = ButtonDefaults.buttonColors(backgroundColor = Green),
-                    shape = RoundedCornerShape(DIMENS_12dp),
                     modifier = Modifier.size(DIMENS_46dp),
+                    colors = ButtonDefaults.buttonColors(backgroundColor = Green),
+                    shape = RoundedCornerShape(DIMENS_14dp),
+                    contentPadding = PaddingValues(DIMENS_10dp),
                     onClick = { /*TODO*/ })
                 {
                     Icon(
+                        modifier = Modifier.fillMaxSize(),
                         imageVector = Icons.Default.Add,
                         tint = Color.White,
                         contentDescription = stringResource(id = R.string.add)

@@ -6,7 +6,6 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -18,7 +17,6 @@ import haw.bmaajp.groceriesapp.ui.theme.Green
 @Composable
 fun BottomBar(
     navController: NavController,
-    modifier: Modifier = Modifier
 ) {
     val navigationItems = listOf(
         BottomNavItem.Home,
