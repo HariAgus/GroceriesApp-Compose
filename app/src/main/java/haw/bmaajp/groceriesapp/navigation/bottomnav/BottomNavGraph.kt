@@ -4,11 +4,13 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.google.accompanist.pager.ExperimentalPagerApi
 import haw.bmaajp.groceriesapp.presentation.screen.about.AboutScreen
 import haw.bmaajp.groceriesapp.presentation.screen.cart.CartScreen
 import haw.bmaajp.groceriesapp.presentation.screen.explore.ExploreScreen
 import haw.bmaajp.groceriesapp.presentation.screen.home.HomeScreen
 
+@ExperimentalPagerApi
 @Composable
 fun BottomNavigationGraph(navController: NavHostController) {
 

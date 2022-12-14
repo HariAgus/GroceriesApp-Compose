@@ -63,6 +63,7 @@ fun ProductCard(
                 fontFamily = GilroyFontFamily,
                 fontWeight = FontWeight.Medium,
                 color = GraySecondTextColor,
+                fontSize = TEXT_SIZE_12sp
             )
 
             Spacer(modifier = Modifier.height(DIMENS_20dp))

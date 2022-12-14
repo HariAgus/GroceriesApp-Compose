@@ -6,11 +6,13 @@ import androidx.compose.material.Scaffold
 import androidx.compose.material.Surface
 import androidx.compose.runtime.Composable
 import androidx.navigation.compose.rememberNavController
+import com.google.accompanist.pager.ExperimentalPagerApi
 import haw.bmaajp.groceriesapp.navigation.bottomnav.BottomNavigationGraph
 import haw.bmaajp.groceriesapp.presentation.component.BottomBar
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_16dp
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_32dp
 
+@OptIn(ExperimentalPagerApi::class)
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
 fun MainScreen() {

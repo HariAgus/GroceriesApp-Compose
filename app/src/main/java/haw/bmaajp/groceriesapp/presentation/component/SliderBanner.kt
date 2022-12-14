@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -18,6 +19,8 @@ import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_114dp
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_12dp
 import haw.bmaajp.groceriesapp.ui.theme.DIMENS_16dp
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.yield
 import kotlin.math.absoluteValue
 
 @ExperimentalPagerApi
@@ -25,12 +28,22 @@ import kotlin.math.absoluteValue
 fun SliderBanner(
     modifier: Modifier = Modifier
 ) {
-    val pagerState = rememberPagerState(initialPage = 1)
+    val pagerState = rememberPagerState(initialPage = 0)
     val imageSlider = listOf(
         painterResource(id = R.drawable.img_banner1),
         painterResource(id = R.drawable.img_banner2),
         painterResource(id = R.drawable.img_banner3)
     )
+
+    LaunchedEffect(Unit) {
+        while (true) {
+            yield()
+            delay(2600)
+            pagerState.animateScrollToPage(
+                page = (pagerState.currentPage + 1) % (pagerState.pageCount)
+            )
+        }
+    }
 
     Column {
         HorizontalPager(
@@ -71,13 +84,13 @@ fun SliderBanner(
                 )
             }
         }
+
         HorizontalPagerIndicator(
             pagerState = pagerState,
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
                 .padding(DIMENS_16dp)
         )
-
     }
 }
 
