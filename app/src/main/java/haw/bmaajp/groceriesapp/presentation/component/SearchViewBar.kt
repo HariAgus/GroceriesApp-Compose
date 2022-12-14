@@ -1,7 +1,7 @@
 package haw.bmaajp.groceriesapp.presentation.component
 
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.heightIn
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -46,13 +46,14 @@ fun SearchViewBar(
                 text = stringResource(id = R.string.search_store),
                 fontFamily = GilroyFontFamily,
                 fontWeight = FontWeight.SemiBold,
-                color = GraySecondTextColor
+                color = GraySecondTextColor,
+                fontSize = TEXT_SIZE_12sp
             )
         },
         modifier = modifier
             .padding(DIMENS_16dp)
             .fillMaxWidth()
-            .heightIn(min = DIMENS_48dp)
+            .height(DIMENS_48dp)
             .clip(RoundedCornerShape(DIMENS_16dp))
     )
 }

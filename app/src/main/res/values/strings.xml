@@ -28,4 +28,9 @@
     <string name="see_all">See All</string>
     <string name="exclusive_offer">Exclusive Offer</string>
     <string name="best_selling">Best Selling</string>
+    <string name="find_products">Find Products</string>
+    <string name="image_profile">Image Profile</string>
+    <string name="name_profile">Hari Agus Widakdo</string>
+    <string name="email_profile">haryagus97@gmail.com</string>
+    <string name="image_about">Image About</string>
 </resources>

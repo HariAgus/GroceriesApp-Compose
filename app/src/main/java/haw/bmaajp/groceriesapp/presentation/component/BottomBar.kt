@@ -6,6 +6,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -16,6 +17,7 @@ import haw.bmaajp.groceriesapp.ui.theme.Green
 
 @Composable
 fun BottomBar(
+    modifier: Modifier = Modifier,
     navController: NavController,
 ) {
     val navigationItems = listOf(
@@ -28,6 +30,7 @@ fun BottomBar(
     BottomNavigation(
         backgroundColor = Color.White,
         contentColor = Color.Black,
+        modifier = modifier
     ) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination?.route

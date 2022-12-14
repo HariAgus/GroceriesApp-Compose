@@ -1,31 +1,63 @@
 package haw.bmaajp.groceriesapp.presentation.screen.explore
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.Preview
+import haw.bmaajp.groceriesapp.R
+import haw.bmaajp.groceriesapp.presentation.common.card.CategoryCard
+import haw.bmaajp.groceriesapp.presentation.component.SearchViewBar
+import haw.bmaajp.groceriesapp.ui.theme.*
+import haw.bmaajp.groceriesapp.utils.DataDummy
 
 @Composable
 fun ExploreScreen() {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .wrapContentSize(Alignment.Center)
-    ) {
-        Text(
-            text = "Explore",
-            fontWeight = FontWeight.Bold,
-            color = Color.White,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 20.sp
-        )
+    Scaffold(
+        modifier = Modifier.padding(bottom = DIMENS_80dp)
+    ) { paddingValues ->
+        Column(
+            modifier = Modifier
+                .padding(paddingValues)
+        ) {
+            Text(
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(top = DIMENS_8dp),
+                text = stringResource(R.string.find_products),
+                fontFamily = GilroyFontFamily,
+                fontWeight = FontWeight.Bold,
+                fontSize = TEXT_SIZE_18sp,
+                color = Black
+            )
+
+            SearchViewBar()
+
+            LazyVerticalGrid(
+                modifier = Modifier.padding(start = DIMENS_16dp, end = DIMENS_16dp),
+                columns = GridCells.Fixed(2),
+                verticalArrangement = Arrangement.spacedBy(DIMENS_10dp),
+                horizontalArrangement = Arrangement.spacedBy(DIMENS_12dp),
+            ) {
+                items(DataDummy.generateDummyCategories()) { categoryItem ->
+                    CategoryCard(categoryItem = categoryItem)
+                }
+            }
+        }
     }
+}
+
+@Preview
+@Composable
+fun ExploreScreenPreview() {
+    ExploreScreen()
 }

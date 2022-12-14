@@ -2,30 +2,29 @@ package haw.bmaajp.groceriesapp.presentation.screen.about
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.wrapContentSize
-import androidx.compose.material.Text
+import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.tooling.preview.Preview
+import haw.bmaajp.groceriesapp.presentation.common.card.ProfileCard
+import haw.bmaajp.groceriesapp.presentation.common.content.ListContentAbout
+import haw.bmaajp.groceriesapp.ui.theme.DIMENS_24dp
 
 @Composable
 fun AboutScreen() {
     Column(
         modifier = Modifier
+            .padding(top = DIMENS_24dp)
             .fillMaxSize()
-            .wrapContentSize(Alignment.Center)
     ) {
-        Text(
-            text = "About",
-            fontWeight = FontWeight.Bold,
-            color = Color.White,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 20.sp
-        )
+        ProfileCard()
+
+        ListContentAbout()
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun AboutScreenPreview() {
+    AboutScreen()
 }
