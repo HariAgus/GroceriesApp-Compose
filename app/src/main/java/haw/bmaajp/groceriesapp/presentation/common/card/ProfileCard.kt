@@ -21,14 +21,16 @@ fun ProfileCard(
     modifier: Modifier = Modifier
 ) {
     Row(
-        modifier = modifier.fillMaxWidth()
+        modifier = modifier
+            .padding(start = DIMENS_16dp, end = DIMENS_16dp)
+            .fillMaxWidth()
     ) {
         Card(
             border = BorderStroke(width = DIMENS_2dp, color = Black),
             shape = RoundedCornerShape(DIMENS_32dp),
         ) {
             Image(
-                modifier = Modifier.height(DIMENS_64dp),
+                modifier = Modifier.height(DIMENS_80dp),
                 painter = painterResource(id = R.drawable.img_profile),
                 contentDescription = stringResource(R.string.image_profile)
             )

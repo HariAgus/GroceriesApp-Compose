@@ -1,10 +1,11 @@
 package haw.bmaajp.groceriesapp.utils
 
 import haw.bmaajp.groceriesapp.R
+import haw.bmaajp.groceriesapp.domain.model.AboutItem
 import haw.bmaajp.groceriesapp.domain.model.CategoryItem
 import haw.bmaajp.groceriesapp.ui.theme.*
 
-object DataCategory {
+object DataDummy {
 
     fun generateDummyCategories(): List<CategoryItem> {
         return listOf(
@@ -49,6 +50,31 @@ object DataCategory {
                 image = R.drawable.category6,
                 background = BackgroundCategory6
             )
+        )
+    }
+
+    fun generateDummyAbout(): List<AboutItem> {
+        return listOf(
+            AboutItem(
+                image = R.drawable.ic_orders,
+                title = "Orders"
+            ),
+            AboutItem(
+                image = R.drawable.ic_my_details,
+                title = "My Details"
+            ),
+            AboutItem(
+                image = R.drawable.ic_address,
+                title = "Delivery Address"
+            ),
+            AboutItem(
+                image = R.drawable.ic_payment,
+                title = "Payment"
+            ),
+            AboutItem(
+                image = R.drawable.ic_notification,
+                title = "Notification"
+            ),
         )
     }
 

@@ -18,7 +18,7 @@ import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.presentation.common.card.CategoryCard
 import haw.bmaajp.groceriesapp.presentation.component.SearchViewBar
 import haw.bmaajp.groceriesapp.ui.theme.*
-import haw.bmaajp.groceriesapp.utils.DataCategory
+import haw.bmaajp.groceriesapp.utils.DataDummy
 
 @Composable
 fun ExploreScreen() {
@@ -48,7 +48,7 @@ fun ExploreScreen() {
                 verticalArrangement = Arrangement.spacedBy(DIMENS_10dp),
                 horizontalArrangement = Arrangement.spacedBy(DIMENS_12dp),
             ) {
-                items(DataCategory.generateDummyCategories()) { categoryItem ->
+                items(DataDummy.generateDummyCategories()) { categoryItem ->
                     CategoryCard(categoryItem = categoryItem)
                 }
             }
