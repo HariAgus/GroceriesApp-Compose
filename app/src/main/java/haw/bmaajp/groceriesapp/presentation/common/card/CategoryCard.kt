@@ -1,4 +1,4 @@
-package haw.bmaajp.groceriesapp.presentation.common
+package haw.bmaajp.groceriesapp.presentation.common.card
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -25,6 +25,7 @@ fun CategoryCard(
     modifier: Modifier = Modifier
 ) {
     Card(
+        modifier = modifier.height(DIMENS_174dp),
         shape = RoundedCornerShape(DIMENS_12dp),
         border = BorderStroke(DIMENS_1dp, Color.LightGray),
         backgroundColor = categoryItem.background
@@ -34,6 +35,9 @@ fun CategoryCard(
                 .padding(PaddingValues(horizontal = DIMENS_40dp, vertical = DIMENS_16dp))
         ) {
             Image(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(DIMENS_80dp),
                 painter = painterResource(id = categoryItem.image),
                 contentDescription = stringResource(R.string.image_category)
             )
