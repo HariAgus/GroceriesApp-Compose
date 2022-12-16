@@ -1,5 +1,6 @@
 package haw.bmaajp.groceriesapp.presentation.screen.about
 
+import android.app.Activity
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
@@ -10,6 +11,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ExitToApp
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -21,6 +23,8 @@ import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
 fun AboutScreen() {
+    val activity = LocalContext.current as Activity
+
     Column(
         modifier = Modifier
             .padding(top = DIMENS_24dp)
@@ -32,12 +36,18 @@ fun AboutScreen() {
 
         Spacer(modifier = Modifier.height(DIMENS_32dp))
 
-        ButtonLogout()
+        ButtonLogout(onClick = {
+            activity.finish()
+        })
+
     }
 }
 
 @Composable
-fun ButtonLogout(modifier: Modifier = Modifier) {
+fun ButtonLogout(
+    modifier: Modifier = Modifier,
+    onClick: () -> Unit
+) {
     Button(
         modifier = modifier
             .padding(DIMENS_16dp)
@@ -46,7 +56,7 @@ fun ButtonLogout(modifier: Modifier = Modifier) {
         shape = RoundedCornerShape(DIMENS_16dp),
         elevation = ButtonDefaults.elevation(DIMENS_2dp),
         colors = ButtonDefaults.buttonColors(backgroundColor = GrayBackground),
-        onClick = { /*TODO*/ }
+        onClick = { onClick.invoke() }
     ) {
         Icon(
             imageVector = Icons.Default.ExitToApp,
@@ -64,12 +74,6 @@ fun ButtonLogout(modifier: Modifier = Modifier) {
             fontWeight = FontWeight.SemiBold,
         )
     }
-}
-
-@Preview
-@Composable
-fun ButtonLogoutPreview() {
-    ButtonLogout()
 }
 
 @Preview(showBackground = true)
