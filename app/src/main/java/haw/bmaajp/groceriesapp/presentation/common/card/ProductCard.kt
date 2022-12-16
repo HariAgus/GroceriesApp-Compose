@@ -2,6 +2,7 @@ package haw.bmaajp.groceriesapp.presentation.common.card
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -16,14 +17,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
+import haw.bmaajp.groceriesapp.navigation.screen.Screen
 import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
 fun ProductCard(
     productItem: ProductItem,
-    modifier: Modifier = Modifier
+    navController: NavController,
+    modifier: Modifier = Modifier,
 ) {
     Card(
         shape = RoundedCornerShape(DIMENS_12dp),
@@ -31,6 +36,9 @@ fun ProductCard(
         modifier = modifier
             .padding(DIMENS_12dp)
             .width(DIMENS_174dp)
+            .clickable {
+                navController.navigate(Screen.Details.passProductId(productId = productItem.id))
+            }
     ) {
         Column(
             modifier = Modifier
@@ -73,7 +81,7 @@ fun ProductCard(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "${productItem.price}",
+                    text = "$${productItem.price}",
                     fontFamily = GilroyFontFamily,
                     fontWeight = FontWeight.Bold,
                     color = Black,
@@ -114,6 +122,7 @@ fun ItemProductPreview() {
             price = 4.99,
             nutritions = "100gr",
             review = 4.0
-        )
+        ),
+        navController = rememberNavController()
     )
 }

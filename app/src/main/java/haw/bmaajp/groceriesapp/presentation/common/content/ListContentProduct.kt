@@ -10,6 +10,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.presentation.common.card.ProductCard
@@ -18,7 +20,8 @@ import haw.bmaajp.groceriesapp.ui.theme.*
 @Composable
 fun ListContentProduct(
     title: String,
-    products: List<ProductItem>
+    products: List<ProductItem>,
+    navController: NavController
 ) {
     Column(
         modifier = Modifier.fillMaxWidth()
@@ -50,7 +53,7 @@ fun ListContentProduct(
             contentPadding = PaddingValues(DIMENS_8dp)
         ) {
             items(products) { product ->
-                ProductCard(productItem = product)
+                ProductCard(productItem = product, navController = navController)
             }
         }
     }
@@ -92,6 +95,7 @@ fun ListContentProductPreview() {
                 nutritions = "100gr",
                 review = 4.0
             )
-        )
+        ),
+        navController = rememberNavController()
     )
 }

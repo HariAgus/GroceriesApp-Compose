@@ -19,57 +19,17 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.NavHostController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import haw.bmaajp.groceriesapp.R
-import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.presentation.common.content.ListContentProduct
 import haw.bmaajp.groceriesapp.presentation.component.SearchViewBar
 import haw.bmaajp.groceriesapp.presentation.component.SliderBanner
 import haw.bmaajp.groceriesapp.ui.theme.*
+import haw.bmaajp.groceriesapp.utils.DataDummy
 
 @ExperimentalPagerApi
 @Composable
 fun HomeScreen(navController: NavHostController) {
     Scaffold { padding ->
-//        Home(
-//            modifier = Modifier
-//                .verticalScroll(rememberScrollState())
-//                .fillMaxSize()
-//                .padding(padding)
-//        )
-
         val stateScroll = rememberScrollState()
-        // TODO: Delete Again
-        val products = listOf(
-            ProductItem(
-                id = 1,
-                title = "Salmond",
-                description = "",
-                image = R.drawable.product9,
-                unit = "7pcs, Priceg",
-                price = 4.99,
-                nutritions = "100gr",
-                review = 4.0
-            ),
-            ProductItem(
-                id = 1,
-                title = "Orange",
-                description = "",
-                image = R.drawable.product8,
-                unit = "7pcs, Priceg",
-                price = 4.99,
-                nutritions = "100gr",
-                review = 4.0
-            ),
-            ProductItem(
-                id = 1,
-                title = "Organic Bananas",
-                description = "",
-                image = R.drawable.product10,
-                unit = "7pcs, Priceg",
-                price = 4.99,
-                nutritions = "100gr",
-                review = 4.0
-            )
-        )
 
         Column(
             modifier = Modifier
@@ -84,25 +44,19 @@ fun HomeScreen(navController: NavHostController) {
 
             ListContentProduct(
                 title = stringResource(id = R.string.exclusive_offer),
-                products = products
+                products = DataDummy.generateDummyProduct().shuffled(),
+                navController = navController
             )
 
             Spacer(modifier = Modifier.height(DIMENS_24dp))
 
             ListContentProduct(
                 title = stringResource(id = R.string.best_selling),
-                products = products.shuffled()
+                products = DataDummy.generateDummyProduct().shuffled(),
+                navController = navController
             )
         }
     }
-}
-
-@ExperimentalPagerApi
-@Composable
-fun Home(
-    modifier: Modifier = Modifier
-) {
-
 }
 
 @Composable
@@ -146,11 +100,4 @@ fun HeaderLocationHome() {
 @Composable
 fun HeaderLocationHomePreview() {
     HeaderLocationHome()
-}
-
-@ExperimentalPagerApi
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
-    Home()
 }
