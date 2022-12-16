@@ -24,6 +24,8 @@ import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.navigation.screen.Screen
 import haw.bmaajp.groceriesapp.ui.theme.*
 
+// TODO: Create onclick to detail
+
 @Composable
 fun ProductCard(
     productItem: ProductItem,
