@@ -10,7 +10,12 @@ class LocalDataSourceImpl(
 
     private val productDao = productDatabase.productDao()
 
+    override fun getAllProduct(): List<ProductItem> {
+        return productDao.getAllProducts()
+    }
+
     override suspend fun getSelectedProduct(productId: Int): ProductItem {
         return productDao.getSelectedProduct(productId = productId)
     }
+
 }

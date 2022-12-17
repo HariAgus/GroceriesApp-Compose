@@ -11,6 +11,8 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
@@ -19,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.presentation.common.SpacerDividerContent
@@ -27,20 +30,26 @@ import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
 fun DetailScreen(
-    productItem: ProductItem,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    detailViewModel: DetailViewModel = hiltViewModel(),
 ) {
+    val selectedProduct by detailViewModel.selectedProduct.collectAsState()
+
     Scaffold { padding ->
         Column(
             modifier = modifier.padding(padding)
         ) {
             /* Image Detail */
-            DetailContentImageHeader(productItem = productItem)
+            selectedProduct?.let { productItem ->
+                DetailContentImageHeader(productItem = productItem)
+            }
 
             Spacer(modifier = Modifier.height(DIMENS_24dp))
 
             /* Detail Content Description */
-            DetailContentDescription(productItem = productItem)
+            selectedProduct?.let { productItem ->
+                DetailContentDescription(productItem = productItem)
+            }
 
             /* Button Add to Card */
             DetailButtonAddCart()
@@ -236,8 +245,25 @@ fun DetailButtonAddCart() {
 
 @Preview
 @Composable
-fun DetailScreenPreview() {
-    DetailScreen(
+fun DetailScreenImageHeaderPreview() {
+    DetailContentImageHeader(
+        ProductItem(
+            id = 1,
+            title = "Organic Bananas",
+            description = "Apples are nutritious. Apples may be good for weight loss. apples may be good for your heart. As part of a healtful and varied diet.",
+            image = R.drawable.product2,
+            unit = "7pcs, Priceg",
+            price = 4.99,
+            nutritions = "100gr",
+            review = 4.0
+        )
+    )
+}
+
+@Preview
+@Composable
+fun DetailContentDescriptionPreview() {
+    DetailContentImageHeader(
         ProductItem(
             id = 1,
             title = "Organic Bananas",

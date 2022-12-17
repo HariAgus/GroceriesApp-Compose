@@ -2,7 +2,6 @@ package haw.bmaajp.groceriesapp.di
 
 import android.content.Context
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -22,12 +21,12 @@ object DatabaseModule {
     @Singleton
     fun provideDatabase(
         @ApplicationContext context: Context
-    ): RoomDatabase.Builder<ProductDatabase> {
+    ): ProductDatabase {
         return Room.databaseBuilder(
             context,
             ProductDatabase::class.java,
             PRODUCT_DATABASE
-        )
+        ).build()
     }
 
     @Provides
