@@ -10,6 +10,7 @@ import haw.bmaajp.groceriesapp.data.repository.OnBoardingOperationImpl
 import haw.bmaajp.groceriesapp.data.repository.Repository
 import haw.bmaajp.groceriesapp.domain.repository.OnBoardingOperations
 import haw.bmaajp.groceriesapp.domain.usecase.UseCases
+import haw.bmaajp.groceriesapp.domain.usecase.getallproduct.GetAllProductUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.getselectedproduct.GetSelectedProductUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.readonboarding.ReadOnBoardingUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.saveonboarding.SaveOnBoardingUseCase
@@ -29,6 +30,7 @@ object RepositoryModule {
     @Singleton
     fun provideUseCase(repository: Repository): UseCases {
         return UseCases(
+            getAllProductUseCase = GetAllProductUseCase(repository),
             saveOnBoardingUseCase = SaveOnBoardingUseCase(repository),
             readOnBoardingUseCase = ReadOnBoardingUseCase(repository),
             getSelectedProductUseCase = GetSelectedProductUseCase(repository)

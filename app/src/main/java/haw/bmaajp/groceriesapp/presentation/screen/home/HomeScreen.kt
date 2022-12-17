@@ -16,6 +16,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import haw.bmaajp.groceriesapp.R
@@ -23,11 +24,13 @@ import haw.bmaajp.groceriesapp.presentation.common.content.ListContentProduct
 import haw.bmaajp.groceriesapp.presentation.component.SearchViewBar
 import haw.bmaajp.groceriesapp.presentation.component.SliderBanner
 import haw.bmaajp.groceriesapp.ui.theme.*
-import haw.bmaajp.groceriesapp.utils.DataDummy
 
 @ExperimentalPagerApi
 @Composable
-fun HomeScreen(navController: NavHostController) {
+fun HomeScreen(
+    navController: NavHostController,
+    homeViewModel: HomeViewModel = hiltViewModel()
+) {
     Scaffold { padding ->
         val stateScroll = rememberScrollState()
 
@@ -44,7 +47,7 @@ fun HomeScreen(navController: NavHostController) {
 
             ListContentProduct(
                 title = stringResource(id = R.string.exclusive_offer),
-                products = DataDummy.generateDummyProduct().shuffled(),
+                products = homeViewModel.getAllProducts.shuffled(),
                 navController = navController
             )
 
@@ -52,7 +55,7 @@ fun HomeScreen(navController: NavHostController) {
 
             ListContentProduct(
                 title = stringResource(id = R.string.best_selling),
-                products = DataDummy.generateDummyProduct().shuffled(),
+                products = homeViewModel.getAllProducts.shuffled(),
                 navController = navController
             )
         }
