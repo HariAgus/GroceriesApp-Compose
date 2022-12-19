@@ -1,31 +1,36 @@
 package haw.bmaajp.groceriesapp.presentation.screen.cart
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.layout.*
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.sp
+import haw.bmaajp.groceriesapp.R
+import haw.bmaajp.groceriesapp.presentation.common.content.ListContentCart
+import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
-fun CartScreen() {
+fun CartScreen(
+    modifier: Modifier = Modifier
+) {
     Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .wrapContentSize(Alignment.Center)
+        modifier = modifier.fillMaxSize()
     ) {
         Text(
-            text = "Cart",
+            modifier = Modifier
+                .align(Alignment.CenterHorizontally)
+                .padding(top = DIMENS_8dp),
+            text = stringResource(R.string.my_cart),
+            fontFamily = GilroyFontFamily,
             fontWeight = FontWeight.Bold,
-            color = Color.White,
-            modifier = Modifier.align(Alignment.CenterHorizontally),
-            textAlign = TextAlign.Center,
-            fontSize = 20.sp
+            fontSize = TEXT_SIZE_18sp,
+            color = Black
         )
+
+        Spacer(modifier = Modifier.height(DIMENS_16dp))
+
+        ListContentCart()
     }
 }

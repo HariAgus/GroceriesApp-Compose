@@ -120,7 +120,7 @@ fun DetailContentDescription(
         Spacer(modifier = Modifier.height(DIMENS_8dp))
 
         Text(
-            text = "${productItem.price}",
+            text = "$${productItem.price}",
             fontFamily = GilroyFontFamily,
             fontWeight = FontWeight.Bold,
             color = Black,

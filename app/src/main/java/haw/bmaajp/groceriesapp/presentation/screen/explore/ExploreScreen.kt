@@ -21,10 +21,12 @@ import haw.bmaajp.groceriesapp.ui.theme.*
 import haw.bmaajp.groceriesapp.utils.DataDummy
 
 @Composable
-fun ExploreScreen() {
+fun ExploreScreen(
+    modifier: Modifier = Modifier
+) {
     Scaffold { paddingValues ->
         Column(
-            modifier = Modifier.padding(paddingValues)
+            modifier = modifier.padding(paddingValues)
         ) {
             Text(
                 modifier = Modifier
