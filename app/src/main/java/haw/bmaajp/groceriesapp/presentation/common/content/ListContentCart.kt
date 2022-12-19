@@ -1,6 +1,7 @@
 package haw.bmaajp.groceriesapp.presentation.common.content
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
@@ -24,7 +25,8 @@ import haw.bmaajp.groceriesapp.ui.theme.*
 @Composable
 fun ListContentCart(
     modifier: Modifier = Modifier,
-    cartProducts: List<ProductItem>
+    cartProducts: List<ProductItem>,
+    onClickDeleteCart: (ProductItem) -> Unit
 ) {
     if (cartProducts.isNotEmpty()) {
         LazyColumn(
@@ -33,7 +35,11 @@ fun ListContentCart(
             verticalArrangement = Arrangement.spacedBy(DIMENS_8dp)
         ) {
             items(cartProducts) { items ->
-                ContentCart(productItem = items)
+                ContentCart(productItem = items,
+                    onClickDeleteCart = { productItem ->
+                        onClickDeleteCart.invoke(productItem)
+                    }
+                )
             }
         }
     } else {
@@ -44,7 +50,8 @@ fun ListContentCart(
 @Composable
 fun ContentCart(
     modifier: Modifier = Modifier,
-    productItem: ProductItem
+    productItem: ProductItem,
+    onClickDeleteCart: (ProductItem) -> Unit
 ) {
     Column {
         Divider(modifier = Modifier.height(DIMENS_1dp), color = GrayBorderStroke)
@@ -99,7 +106,10 @@ fun ContentCart(
             Image(
                 modifier = Modifier
                     .align(Alignment.CenterVertically)
-                    .padding(start = DIMENS_16dp, end = DIMENS_16dp),
+                    .padding(start = DIMENS_16dp, end = DIMENS_16dp)
+                    .clickable {
+                        onClickDeleteCart.invoke(productItem)
+                    },
                 imageVector = Icons.Default.Delete,
                 contentDescription = stringResource(R.string.image_delete),
                 colorFilter = ColorFilter.tint(color = Color.DarkGray)
@@ -122,12 +132,13 @@ fun ContentCartPreview() {
             price = 4.99,
             nutritions = "100gr",
             review = 4.0
-        )
+        ),
+        onClickDeleteCart = {}
     )
 }
 
 @Preview(showBackground = true)
 @Composable
 fun ListContentCartPreview() {
-    ListContentCart(cartProducts = emptyList())
+    ListContentCart(cartProducts = emptyList(), onClickDeleteCart = {})
 }

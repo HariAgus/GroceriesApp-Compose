@@ -10,11 +10,9 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import haw.bmaajp.groceriesapp.R
-import haw.bmaajp.groceriesapp.ui.theme.DIMENS_16dp
-import haw.bmaajp.groceriesapp.ui.theme.DIMENS_248dp
-import haw.bmaajp.groceriesapp.ui.theme.GilroyFontFamily
-import haw.bmaajp.groceriesapp.ui.theme.TEXT_SIZE_18sp
+import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
 fun EmptyContent(
@@ -40,7 +38,14 @@ fun EmptyContent(
             fontFamily = GilroyFontFamily,
             fontWeight = FontWeight.Bold,
             fontSize = TEXT_SIZE_18sp,
-            textAlign = TextAlign.Center
+            color = Black,
+            textAlign = TextAlign.Center,
         )
     }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun EmptyContentPreview() {
+    EmptyContent()
 }

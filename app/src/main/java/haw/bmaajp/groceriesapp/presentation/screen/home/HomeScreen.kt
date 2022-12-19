@@ -1,5 +1,6 @@
 package haw.bmaajp.groceriesapp.presentation.screen.home
 
+import android.content.Context
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
@@ -24,6 +25,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import haw.bmaajp.groceriesapp.R
+import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.presentation.common.content.ListContentProduct
 import haw.bmaajp.groceriesapp.presentation.component.SearchViewBar
 import haw.bmaajp.groceriesapp.presentation.component.SliderBanner
@@ -55,12 +57,7 @@ fun HomeScreen(
                 products = allProducts,
                 navController = navController,
                 onClickToCart = { productItem ->
-                    Toast.makeText(
-                        mContext,
-                        "Success To Cart ${productItem.title}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    homeViewModel.addCart(productItem.copy(isCart = true))
+                    clickToCart(mContext, productItem, homeViewModel)
                 }
             )
 
@@ -68,10 +65,10 @@ fun HomeScreen(
 
             ListContentProduct(
                 title = stringResource(id = R.string.best_selling),
-                products = allProducts,
+                products = allProducts.sortedByDescending { it.id },
                 navController = navController,
                 onClickToCart = { productItem ->
-
+                    clickToCart(mContext, productItem, homeViewModel)
                 }
             )
         }
@@ -113,6 +110,15 @@ fun HeaderLocationHome() {
             )
         }
     }
+}
+
+fun clickToCart(context: Context, productItem: ProductItem, viewModel: HomeViewModel) {
+    Toast.makeText(
+        context,
+        "Success To Cart ${productItem.title}",
+        Toast.LENGTH_SHORT
+    ).show()
+    viewModel.addCart(productItem.copy(isCart = true))
 }
 
 @Preview(showBackground = true)

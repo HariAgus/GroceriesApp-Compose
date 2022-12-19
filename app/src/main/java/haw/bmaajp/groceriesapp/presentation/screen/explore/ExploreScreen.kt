@@ -31,7 +31,7 @@ fun ExploreScreen(
             Text(
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
-                    .padding(top = DIMENS_8dp),
+                    .padding(top = DIMENS_16dp),
                 text = stringResource(R.string.find_products),
                 fontFamily = GilroyFontFamily,
                 fontWeight = FontWeight.Bold,
