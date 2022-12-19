@@ -2,11 +2,10 @@ package haw.bmaajp.groceriesapp.presentation.screen.detail
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.Orientation
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.KeyboardArrowRight
@@ -36,24 +35,27 @@ fun DetailScreen(
     val selectedProduct by detailViewModel.selectedProduct.collectAsState()
 
     Scaffold { padding ->
-        Column(
-            modifier = modifier.padding(padding)
-        ) {
-            /* Image Detail */
-            selectedProduct?.let { productItem ->
-                DetailContentImageHeader(productItem = productItem)
+        Column {
+            Column(
+                modifier = modifier
+                    .verticalScroll(rememberScrollState())
+                    .weight(1f)
+                    .padding(padding)
+            ) {
+                selectedProduct?.let { productItem ->
+                    DetailContentImageHeader(productItem = productItem)
+                }
+
+                Spacer(modifier = Modifier.height(DIMENS_24dp))
+
+                selectedProduct?.let { productItem ->
+                    DetailContentDescription(productItem = productItem)
+                }
             }
 
-            Spacer(modifier = Modifier.height(DIMENS_24dp))
-
-            /* Detail Content Description */
-            selectedProduct?.let { productItem ->
-                DetailContentDescription(productItem = productItem)
+            Column {
+                DetailButtonAddCart()
             }
-
-            /* Button Add to Card */
-            DetailButtonAddCart()
-
         }
     }
 }
@@ -81,12 +83,8 @@ fun DetailContentImageHeader(
 fun DetailContentDescription(
     productItem: ProductItem
 ) {
-    val scrollState = rememberScrollState()
-
     Column(
-        modifier = Modifier
-            .scrollable(state = scrollState, orientation = Orientation.Vertical)
-            .padding(start = DIMENS_16dp, end = DIMENS_16dp)
+        modifier = Modifier.padding(start = DIMENS_16dp, end = DIMENS_16dp)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth()
@@ -109,6 +107,7 @@ fun DetailContentDescription(
                     fontFamily = GilroyFontFamily,
                     fontWeight = FontWeight.Medium,
                     color = GraySecondTextColor,
+                    fontSize = TEXT_SIZE_12sp,
                 )
             }
             Icon(

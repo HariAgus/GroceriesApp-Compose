@@ -1,7 +1,5 @@
 package haw.bmaajp.groceriesapp.presentation.screen.onboarding
 
-import android.content.Context
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -14,7 +12,6 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -23,28 +20,22 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import haw.bmaajp.groceriesapp.R
-import haw.bmaajp.groceriesapp.navigation.screen.Screen
+import haw.bmaajp.groceriesapp.navigation.graph.Graph
 import haw.bmaajp.groceriesapp.ui.theme.*
-
-private fun mToast(context: Context) {
-    Toast.makeText(context, "This is a Sample Toast", Toast.LENGTH_LONG).show()
-}
 
 @Composable
 fun OnBoardingScreen(
     navController: NavHostController,
     onBoardingViewModel: OnBoardingViewModel = hiltViewModel()
 ) {
-    val mContext = LocalContext.current
-
     OnBoarding(
         modifier = Modifier.fillMaxSize(),
         onClick = {
-            mToast(mContext)
             navController.popBackStack()
-            navController.navigate(Screen.Main.route)
+            navController.navigate(Graph.MAIN)
             onBoardingViewModel.saveOnBoardingState(isCompleted = true)
-        })
+        }
+    )
 }
 
 @Composable

@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import haw.bmaajp.groceriesapp.domain.usecase.UseCases
+import haw.bmaajp.groceriesapp.utils.DataDummy
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -20,6 +21,10 @@ class SplashViewModel @Inject constructor(
     val onBoardingIsCompleted: StateFlow<Boolean> = _onBoardingIsCompleted
 
     init {
+        viewModelScope.launch {
+            useCases.insertProductsUseCase.invoke(DataDummy.generateDummyProduct())
+        }
+
         viewModelScope.launch(Dispatchers.IO) {
             _onBoardingIsCompleted.value =
                 useCases.readOnBoardingUseCase().stateIn(viewModelScope).value
