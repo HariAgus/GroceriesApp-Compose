@@ -18,7 +18,7 @@ object DataDummy {
                 unit = "1pcs, Price",
                 price = 6.52,
                 nutritions = "50gr",
-                review = 4.8
+                review = 3.5
             ),
             ProductItem(
                 id = 2,
@@ -68,7 +68,7 @@ object DataDummy {
                 unit = "1pcs, Price",
                 price = 1.5,
                 nutritions = "10gr",
-                review = 4.0
+                review = 3.8
             ),
             ProductItem(
                 id = 7,
@@ -78,7 +78,7 @@ object DataDummy {
                 unit = "1pcs, Price",
                 price = 5.0,
                 nutritions = "70gr",
-                review = 4.8
+                review = 3.0
             ),
             ProductItem(
                 id = 8,
@@ -139,17 +139,6 @@ object DataDummy {
                 title = "Dairy & Eggs",
                 image = R.drawable.category5,
                 background = BackgroundCategory5
-            ),
-            CategoryItem(
-                title = "Beverages",
-                image = R.drawable.category6,
-                background = BackgroundCategory6
-            ),
-
-            CategoryItem(
-                title = "Beverages",
-                image = R.drawable.category6,
-                background = BackgroundCategory6
             ),
             CategoryItem(
                 title = "Beverages",

@@ -22,12 +22,9 @@ import haw.bmaajp.groceriesapp.utils.DataDummy
 
 @Composable
 fun ExploreScreen() {
-    Scaffold(
-        modifier = Modifier.padding(bottom = DIMENS_80dp)
-    ) { paddingValues ->
+    Scaffold { paddingValues ->
         Column(
-            modifier = Modifier
-                .padding(paddingValues)
+            modifier = Modifier.padding(paddingValues)
         ) {
             Text(
                 modifier = Modifier
