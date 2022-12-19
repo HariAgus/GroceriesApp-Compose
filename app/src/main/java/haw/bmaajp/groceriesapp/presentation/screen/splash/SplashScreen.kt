@@ -19,6 +19,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import haw.bmaajp.groceriesapp.R
+import haw.bmaajp.groceriesapp.navigation.graph.Graph
 import haw.bmaajp.groceriesapp.navigation.screen.Screen
 import haw.bmaajp.groceriesapp.ui.theme.Green
 import kotlinx.coroutines.delay
@@ -44,7 +45,7 @@ fun SplashScreen(
         delay(1200L)
         navController.popBackStack()
 
-        if (onBoardingIsCompleted) navController.navigate(Screen.Main.route)
+        if (onBoardingIsCompleted) navController.navigate(Graph.MAIN)
         else navController.navigate(Screen.OnBoarding.route)
     }
 

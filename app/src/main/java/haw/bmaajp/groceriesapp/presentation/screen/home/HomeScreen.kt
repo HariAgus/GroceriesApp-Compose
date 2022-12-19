@@ -24,6 +24,7 @@ import haw.bmaajp.groceriesapp.presentation.common.content.ListContentProduct
 import haw.bmaajp.groceriesapp.presentation.component.SearchViewBar
 import haw.bmaajp.groceriesapp.presentation.component.SliderBanner
 import haw.bmaajp.groceriesapp.ui.theme.*
+import java.util.*
 
 @ExperimentalPagerApi
 @Composable
@@ -47,7 +48,7 @@ fun HomeScreen(
 
             ListContentProduct(
                 title = stringResource(id = R.string.exclusive_offer),
-                products = homeViewModel.getAllProducts.shuffled(),
+                products = homeViewModel.getAllProducts,
                 navController = navController
             )
 
@@ -55,7 +56,7 @@ fun HomeScreen(
 
             ListContentProduct(
                 title = stringResource(id = R.string.best_selling),
-                products = homeViewModel.getAllProducts.shuffled(),
+                products = homeViewModel.getAllProducts.shuffled(Random(5L)),
                 navController = navController
             )
         }

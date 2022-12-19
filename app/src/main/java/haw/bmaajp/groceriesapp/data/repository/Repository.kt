@@ -17,10 +17,12 @@ class Repository @Inject constructor(
 
     fun readOnBoardingState(): Flow<Boolean> = dataStore.readOnBoardingState()
 
+    suspend fun insertProducts(products: List<ProductItem>) =
+        localDataSource.insertProducts(products)
+
     fun getAllProduct(): List<ProductItem> = localDataSource.getAllProduct()
 
-    suspend fun getSelectedProduct(productId: Int): ProductItem {
-        return localDataSource.getSelectedProduct(productId = productId)
-    }
+    suspend fun getSelectedProduct(productId: Int): ProductItem =
+        localDataSource.getSelectedProduct(productId = productId)
 
 }

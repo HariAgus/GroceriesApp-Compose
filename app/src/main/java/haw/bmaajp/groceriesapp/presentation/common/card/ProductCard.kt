@@ -1,5 +1,6 @@
 package haw.bmaajp.groceriesapp.presentation.common.card
 
+import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -38,6 +39,7 @@ fun ProductCard(
             .width(DIMENS_174dp)
             .clickable {
                 navController.navigate(Screen.Details.passProductId(productId = productItem.id))
+                Log.d("ProductCard", "ProductCard: ${productItem.id}")
             }
     ) {
         Column(
