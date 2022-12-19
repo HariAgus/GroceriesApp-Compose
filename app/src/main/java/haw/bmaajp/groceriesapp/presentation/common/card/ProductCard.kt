@@ -1,6 +1,5 @@
 package haw.bmaajp.groceriesapp.presentation.common.card
 
-import android.util.Log
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
@@ -27,9 +26,10 @@ import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
 fun ProductCard(
+    modifier: Modifier = Modifier,
     productItem: ProductItem,
     navController: NavController,
-    modifier: Modifier = Modifier,
+    onClickToCart: (ProductItem) -> Unit
 ) {
     Card(
         shape = RoundedCornerShape(DIMENS_12dp),
@@ -39,7 +39,6 @@ fun ProductCard(
             .width(DIMENS_174dp)
             .clickable {
                 navController.navigate(Screen.Details.passProductId(productId = productItem.id))
-                Log.d("ProductCard", "ProductCard: ${productItem.id}")
             }
     ) {
         Column(
@@ -96,7 +95,10 @@ fun ProductCard(
                     colors = ButtonDefaults.buttonColors(backgroundColor = Green),
                     shape = RoundedCornerShape(DIMENS_14dp),
                     contentPadding = PaddingValues(DIMENS_10dp),
-                    onClick = { /*TODO*/ })
+                    onClick = {
+                        onClickToCart.invoke(productItem)
+                    }
+                )
                 {
                     Icon(
                         modifier = Modifier.fillMaxSize(),
@@ -115,7 +117,7 @@ fun ProductCard(
 @Composable
 fun ItemProductPreview() {
     ProductCard(
-        ProductItem(
+        productItem = ProductItem(
             id = 1,
             title = "Organic Bananas",
             description = "",
@@ -125,6 +127,7 @@ fun ItemProductPreview() {
             nutritions = "100gr",
             review = 4.0
         ),
-        navController = rememberNavController()
+        navController = rememberNavController(),
+        onClickToCart = {}
     )
 }

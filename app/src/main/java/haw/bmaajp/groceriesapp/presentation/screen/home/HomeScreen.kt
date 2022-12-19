@@ -1,5 +1,6 @@
 package haw.bmaajp.groceriesapp.presentation.screen.home
 
+import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -9,9 +10,12 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -24,7 +28,6 @@ import haw.bmaajp.groceriesapp.presentation.common.content.ListContentProduct
 import haw.bmaajp.groceriesapp.presentation.component.SearchViewBar
 import haw.bmaajp.groceriesapp.presentation.component.SliderBanner
 import haw.bmaajp.groceriesapp.ui.theme.*
-import java.util.*
 
 @ExperimentalPagerApi
 @Composable
@@ -32,9 +35,10 @@ fun HomeScreen(
     navController: NavHostController,
     homeViewModel: HomeViewModel = hiltViewModel()
 ) {
-    Scaffold { padding ->
-        val stateScroll = rememberScrollState()
+    val mContext = LocalContext.current
+    val allProducts by homeViewModel.productList.collectAsState()
 
+    Scaffold { padding ->
         Column(
             modifier = Modifier
                 .verticalScroll(rememberScrollState())
@@ -48,16 +52,27 @@ fun HomeScreen(
 
             ListContentProduct(
                 title = stringResource(id = R.string.exclusive_offer),
-                products = homeViewModel.getAllProducts,
-                navController = navController
+                products = allProducts,
+                navController = navController,
+                onClickToCart = { productItem ->
+                    Toast.makeText(
+                        mContext,
+                        "Success To Cart ${productItem.title}",
+                        Toast.LENGTH_SHORT
+                    ).show()
+                    homeViewModel.addCart(productItem.copy(isCart = true))
+                }
             )
 
             Spacer(modifier = Modifier.height(DIMENS_24dp))
 
             ListContentProduct(
                 title = stringResource(id = R.string.best_selling),
-                products = homeViewModel.getAllProducts.shuffled(Random(5L)),
-                navController = navController
+                products = allProducts,
+                navController = navController,
+                onClickToCart = { productItem ->
+
+                }
             )
         }
     }

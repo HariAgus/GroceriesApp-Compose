@@ -20,20 +20,24 @@ import androidx.compose.ui.tooling.preview.Preview
 import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.ui.theme.*
-import haw.bmaajp.groceriesapp.utils.DataDummy
 
 @Composable
 fun ListContentCart(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    cartProducts: List<ProductItem>
 ) {
-    LazyColumn(
-        modifier = modifier.fillMaxWidth(),
-        contentPadding = PaddingValues(top = DIMENS_32dp),
-        verticalArrangement = Arrangement.spacedBy(DIMENS_8dp)
-    ) {
-        items(DataDummy.generateDummyProduct()) { items ->
-            ContentCart(productItem = items)
+    if (cartProducts.isNotEmpty()) {
+        LazyColumn(
+            modifier = modifier.fillMaxWidth(),
+            contentPadding = PaddingValues(top = DIMENS_32dp),
+            verticalArrangement = Arrangement.spacedBy(DIMENS_8dp)
+        ) {
+            items(cartProducts) { items ->
+                ContentCart(productItem = items)
+            }
         }
+    } else {
+        EmptyContent()
     }
 }
 
@@ -120,4 +124,10 @@ fun ContentCartPreview() {
             review = 4.0
         )
     )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun ListContentCartPreview() {
+    ListContentCart(cartProducts = emptyList())
 }

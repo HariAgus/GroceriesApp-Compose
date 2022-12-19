@@ -4,6 +4,8 @@ import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.domain.repository.LocalDataSource
 import haw.bmaajp.groceriesapp.domain.repository.OnBoardingOperations
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
+import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 class Repository @Inject constructor(
@@ -20,9 +22,16 @@ class Repository @Inject constructor(
     suspend fun insertProducts(products: List<ProductItem>) =
         localDataSource.insertProducts(products)
 
-    fun getAllProduct(): List<ProductItem> = localDataSource.getAllProduct()
+    fun getAllProduct(): Flow<List<ProductItem>> = localDataSource.getAllProduct()
 
     suspend fun getSelectedProduct(productId: Int): ProductItem =
         localDataSource.getSelectedProduct(productId = productId)
+
+    fun getAllProductCart(isCart: Boolean): Flow<List<ProductItem>> =
+        localDataSource.getAllProductCart(isCart)
+
+    suspend fun addCart(productItem: ProductItem) = localDataSource.addCart(productItem)
+
+    suspend fun deleteCart(productItem: ProductItem) = localDataSource.deleteCart(productItem)
 
 }

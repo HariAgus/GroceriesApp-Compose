@@ -18,7 +18,7 @@ object DataDummy {
                 unit = "1pcs, Price",
                 price = 6.52,
                 nutritions = "50gr",
-                review = 3.5
+                review = 3.5,
             ),
             ProductItem(
                 id = 2,
