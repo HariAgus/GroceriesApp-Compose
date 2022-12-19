@@ -34,4 +34,8 @@
     <string name="email_profile">haryagus97@gmail.com</string>
     <string name="image_about">Image About</string>
     <string name="logout">Logout</string>
+    <string name="image_delete">Image Delete</string>
+    <string name="my_cart">My Cart</string>
+    <string name="image_content_empty">Image Content Empty</string>
+    <string name="oops_no_data">Ooops! No Data</string>
 </resources>

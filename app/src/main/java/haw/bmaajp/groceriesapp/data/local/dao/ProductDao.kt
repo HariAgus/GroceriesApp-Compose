@@ -1,11 +1,8 @@
 package haw.bmaajp.groceriesapp.data.local.dao
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import haw.bmaajp.groceriesapp.domain.model.ProductItem
-import haw.bmaajp.groceriesapp.utils.DataDummy
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface ProductDao {
@@ -14,9 +11,18 @@ interface ProductDao {
     suspend fun insertProducts(products: List<ProductItem>)
 
     @Query("SELECT * FROM product_table")
-    fun getAllProducts(): List<ProductItem> = DataDummy.generateDummyProduct()
+    fun getAllProducts(): Flow<List<ProductItem>>
 
     @Query("SELECT * FROM product_table WHERE id=:productId")
     fun getSelectedProduct(productId: Int): ProductItem
+
+    @Query("SELECT * FROM product_table WHERE isCart=:isCart")
+    fun getAllProductCart(isCart: Boolean): Flow<List<ProductItem>>
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun addCart(productItem: ProductItem)
+
+    @Delete
+    suspend fun deleteCart(productItem: ProductItem)
 
 }

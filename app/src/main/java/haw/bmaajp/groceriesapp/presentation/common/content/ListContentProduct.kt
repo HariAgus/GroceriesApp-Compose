@@ -21,7 +21,8 @@ import haw.bmaajp.groceriesapp.ui.theme.*
 fun ListContentProduct(
     title: String,
     products: List<ProductItem>,
-    navController: NavController
+    navController: NavController,
+    onClickToCart: (ProductItem) -> Unit
 ) {
     Column(
         modifier = Modifier.fillMaxWidth()
@@ -53,7 +54,11 @@ fun ListContentProduct(
             contentPadding = PaddingValues(DIMENS_8dp)
         ) {
             items(products) { product ->
-                ProductCard(productItem = product, navController = navController)
+                ProductCard(
+                    productItem = product,
+                    navController = navController,
+                    onClickToCart = onClickToCart
+                )
             }
         }
     }
@@ -96,6 +101,7 @@ fun ListContentProductPreview() {
                 review = 4.0
             )
         ),
-        navController = rememberNavController()
+        navController = rememberNavController(),
+        onClickToCart = {}
     )
 }

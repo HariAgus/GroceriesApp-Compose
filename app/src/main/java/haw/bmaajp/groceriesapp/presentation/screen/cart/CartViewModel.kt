@@ -1,4 +1,4 @@
-package haw.bmaajp.groceriesapp.presentation.screen.home
+package haw.bmaajp.groceriesapp.presentation.screen.cart
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,23 +12,23 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class CartViewModel @Inject constructor(
     private val useCases: UseCases
 ) : ViewModel() {
 
-    private val _productList = MutableStateFlow<List<ProductItem>>(emptyList())
-    val productList = _productList.asStateFlow()
+    private val _productCartList = MutableStateFlow<List<ProductItem>>(emptyList())
+    val productCartList = _productCartList.asStateFlow()
 
     init {
-        viewModelScope.launch(Dispatchers.IO) {
-            useCases.getAllProductUseCase.invoke().collect { value ->
-                _productList.value = value
-            }
-        }
+        getAllProductCartList(isCart = true)
     }
 
-    fun addCart(productItem: ProductItem) = viewModelScope.launch {
-        useCases.addCartUseCase.invoke(productItem)
+    private fun getAllProductCartList(isCart: Boolean) {
+        viewModelScope.launch(Dispatchers.IO) {
+            useCases.getAllCartUseCase.invoke(isCart).collect { values ->
+                _productCartList.value = values
+            }
+        }
     }
 
 }

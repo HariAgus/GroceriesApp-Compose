@@ -14,5 +14,6 @@ data class ProductItem(
     val unit: String,
     val price: Double,
     val nutritions: String,
-    val review: Double
+    val review: Double,
+    val isCart: Boolean = false
 )

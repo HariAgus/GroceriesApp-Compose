@@ -9,12 +9,15 @@ import dagger.hilt.components.SingletonComponent
 import haw.bmaajp.groceriesapp.data.repository.OnBoardingOperationImpl
 import haw.bmaajp.groceriesapp.data.repository.Repository
 import haw.bmaajp.groceriesapp.domain.repository.OnBoardingOperations
-import haw.bmaajp.groceriesapp.domain.usecase.saveproductusecase.InsertProductsUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.UseCases
+import haw.bmaajp.groceriesapp.domain.usecase.addcartusecase.AddCartUseCase
+import haw.bmaajp.groceriesapp.domain.usecase.deletecartusecase.DeleteCartUseCase
+import haw.bmaajp.groceriesapp.domain.usecase.getallcartusecase.GetAllCartUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.getallproduct.GetAllProductUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.getselectedproduct.GetSelectedProductUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.readonboarding.ReadOnBoardingUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.saveonboarding.SaveOnBoardingUseCase
+import haw.bmaajp.groceriesapp.domain.usecase.saveproductusecase.InsertProductsUseCase
 import javax.inject.Singleton
 
 @Module
@@ -31,11 +34,14 @@ object RepositoryModule {
     @Singleton
     fun provideUseCase(repository: Repository): UseCases {
         return UseCases(
-            getAllProductUseCase = GetAllProductUseCase(repository),
             saveOnBoardingUseCase = SaveOnBoardingUseCase(repository),
             insertProductsUseCase = InsertProductsUseCase(repository),
             readOnBoardingUseCase = ReadOnBoardingUseCase(repository),
-            getSelectedProductUseCase = GetSelectedProductUseCase(repository)
+            getSelectedProductUseCase = GetSelectedProductUseCase(repository),
+            getAllProductUseCase = GetAllProductUseCase(repository),
+            getAllCartUseCase = GetAllCartUseCase(repository),
+            addCartUseCase = AddCartUseCase(repository),
+            deleteCart = DeleteCartUseCase(repository)
         )
     }
 
