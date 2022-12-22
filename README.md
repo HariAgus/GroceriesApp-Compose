@@ -12,5 +12,9 @@
 </p>
 
 <p align="center">
+<img src="assets/jetpack_compose_logo.png"/>
+</p
+
+<p align="center">
   <img src="assets/cover_banner.png"/>
 </p>
