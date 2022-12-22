@@ -39,7 +39,7 @@ fun ExploreScreen(
                 color = Black
             )
 
-            SearchViewBar()
+            SearchViewBar(hint = stringResource(id = R.string.search_category))
 
             LazyVerticalGrid(
                 modifier = Modifier.padding(start = DIMENS_16dp, end = DIMENS_16dp),

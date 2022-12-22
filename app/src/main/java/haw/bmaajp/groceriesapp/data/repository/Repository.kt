@@ -34,4 +34,6 @@ class Repository @Inject constructor(
 
     suspend fun deleteCart(productItem: ProductItem) = localDataSource.deleteCart(productItem)
 
+    fun searchProduct(query: String): Flow<List<ProductItem>> = localDataSource.searchProduct(query)
+
 }

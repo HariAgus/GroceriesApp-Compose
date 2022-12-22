@@ -19,13 +19,14 @@ import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
 fun ListContentProduct(
+    modifier: Modifier = Modifier,
     title: String,
     products: List<ProductItem>,
     navController: NavController,
     onClickToCart: (ProductItem) -> Unit
 ) {
     Column(
-        modifier = Modifier.fillMaxWidth()
+        modifier = modifier.fillMaxWidth()
     ) {
         Row(
             modifier = Modifier
@@ -69,7 +70,7 @@ fun ListContentProduct(
 fun ListContentProductPreview() {
     ListContentProduct(
         title = "Exclusive Offer",
-        listOf(
+        products = listOf(
             ProductItem(
                 id = 1,
                 title = "Organic Bananas",

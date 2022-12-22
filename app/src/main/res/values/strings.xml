@@ -11,6 +11,7 @@
     <string name="desc_welcome">Ger your groceries in as fast as one hour</string>
     <string name="get_started">Get Started</string>
     <string name="search_store">Search Store</string>
+    <string name="search_category">Search Category</string>
     <string name="image_slider">Image Slider</string>
     <string name="image_product">Image Product</string>
     <string name="add">Add</string>

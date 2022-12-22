@@ -18,6 +18,7 @@ import haw.bmaajp.groceriesapp.domain.usecase.getselectedproduct.GetSelectedProd
 import haw.bmaajp.groceriesapp.domain.usecase.readonboarding.ReadOnBoardingUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.saveonboarding.SaveOnBoardingUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.saveproductusecase.InsertProductsUseCase
+import haw.bmaajp.groceriesapp.domain.usecase.searchproductusecase.SearchProductUseCase
 import javax.inject.Singleton
 
 @Module
@@ -41,7 +42,8 @@ object RepositoryModule {
             getAllProductUseCase = GetAllProductUseCase(repository),
             getAllCartUseCase = GetAllCartUseCase(repository),
             addCartUseCase = AddCartUseCase(repository),
-            deleteCart = DeleteCartUseCase(repository)
+            deleteCart = DeleteCartUseCase(repository),
+            searchProductUseCase = SearchProductUseCase(repository)
         )
     }
 

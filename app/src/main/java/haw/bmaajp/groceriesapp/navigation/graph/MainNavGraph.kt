@@ -12,6 +12,7 @@ import haw.bmaajp.groceriesapp.presentation.screen.cart.CartScreen
 import haw.bmaajp.groceriesapp.presentation.screen.detail.DetailScreen
 import haw.bmaajp.groceriesapp.presentation.screen.explore.ExploreScreen
 import haw.bmaajp.groceriesapp.presentation.screen.home.HomeScreen
+import haw.bmaajp.groceriesapp.presentation.screen.search.SearchScreen
 import haw.bmaajp.groceriesapp.utils.Constants.PRODUCT_ARGUMENT_KEY
 
 @OptIn(ExperimentalPagerApi::class)
@@ -35,6 +36,8 @@ fun MainNavGraph(navController: NavHostController) {
             AboutScreen()
         }
 
+        searchNavGraph()
+
         detailsNavGraph()
     }
 }
@@ -51,6 +54,17 @@ fun NavGraphBuilder.detailsNavGraph() {
             })
         ) {
             DetailScreen()
+        }
+    }
+}
+
+fun NavGraphBuilder.searchNavGraph() {
+    navigation(
+        route = Graph.SEARCH,
+        startDestination = Screen.Search.route
+    ) {
+        composable(route = Screen.Search.route) {
+            SearchScreen()
         }
     }
 }

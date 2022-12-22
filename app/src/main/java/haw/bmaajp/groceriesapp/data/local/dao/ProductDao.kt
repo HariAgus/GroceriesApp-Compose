@@ -25,4 +25,7 @@ interface ProductDao {
     @Delete
     suspend fun deleteCart(productItem: ProductItem)
 
+    @Query("SELECT * FROM product_table WHERE title LIKE '%' || :query || '%'")
+    fun searchProduct(query: String): Flow<List<ProductItem>>
+
 }
