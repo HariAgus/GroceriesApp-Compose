@@ -54,7 +54,7 @@ fun RatingBar(
 
 }
 
-@Preview()
+@Preview
 @Composable
 fun RatingBarPreview() {
     RatingBar(rating = 3.0)

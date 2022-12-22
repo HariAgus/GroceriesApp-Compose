@@ -4,8 +4,6 @@ import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.domain.repository.LocalDataSource
 import haw.bmaajp.groceriesapp.domain.repository.OnBoardingOperations
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 class Repository @Inject constructor(

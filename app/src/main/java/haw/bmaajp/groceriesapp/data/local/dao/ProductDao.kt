@@ -22,7 +22,7 @@ interface ProductDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addCart(productItem: ProductItem)
 
-    @Delete
+    @Update
     suspend fun deleteCart(productItem: ProductItem)
 
     @Query("SELECT * FROM product_table WHERE title LIKE '%' || :query || '%'")

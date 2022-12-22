@@ -38,9 +38,7 @@ fun AboutScreen(
 
         Spacer(modifier = Modifier.height(DIMENS_32dp))
 
-        ButtonLogout(onClick = {
-            activity.finish()
-        })
+        ButtonLogout { activity.finish() }
 
     }
 }

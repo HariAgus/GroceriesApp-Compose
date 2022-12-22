@@ -31,10 +31,6 @@ class HomeViewModel @Inject constructor(
         }
     }
 
-    fun updateSearchQuery(query: String) {
-        _searchQuery.value = query
-    }
-
     fun addCart(productItem: ProductItem) = viewModelScope.launch {
         useCases.addCartUseCase.invoke(productItem)
     }

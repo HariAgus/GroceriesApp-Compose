@@ -1,6 +1,5 @@
 package haw.bmaajp.groceriesapp.presentation.screen.cart
 
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -17,7 +16,7 @@ class CartViewModel @Inject constructor(
     private val useCases: UseCases
 ) : ViewModel() {
 
-    private val isCart = mutableStateOf(true)
+    private val isCart = true
 
     private val _productCartList = MutableStateFlow<List<ProductItem>>(emptyList())
     val productCartList = _productCartList.asStateFlow()
@@ -28,7 +27,7 @@ class CartViewModel @Inject constructor(
 
     private fun getAllProductCartList() {
         viewModelScope.launch(Dispatchers.IO) {
-            useCases.getAllCartUseCase.invoke(isCart.value).collect { values ->
+            useCases.getAllCartUseCase.invoke(isCart).collect { values ->
                 _productCartList.value = values
             }
         }

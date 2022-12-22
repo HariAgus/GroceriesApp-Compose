@@ -7,7 +7,6 @@ import androidx.navigation.compose.composable
 import haw.bmaajp.groceriesapp.navigation.screen.Screen
 import haw.bmaajp.groceriesapp.presentation.screen.MainScreen
 import haw.bmaajp.groceriesapp.presentation.screen.onboarding.OnBoardingScreen
-import haw.bmaajp.groceriesapp.presentation.screen.search.SearchScreen
 import haw.bmaajp.groceriesapp.presentation.screen.splash.SplashScreen
 
 @Composable
