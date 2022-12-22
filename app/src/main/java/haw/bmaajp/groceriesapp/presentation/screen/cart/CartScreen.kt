@@ -12,7 +12,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
 import haw.bmaajp.groceriesapp.R
 import haw.bmaajp.groceriesapp.presentation.common.content.ListContentCart
-import haw.bmaajp.groceriesapp.ui.theme.*
+import haw.bmaajp.groceriesapp.ui.theme.Black
+import haw.bmaajp.groceriesapp.ui.theme.DIMENS_16dp
+import haw.bmaajp.groceriesapp.ui.theme.GilroyFontFamily
+import haw.bmaajp.groceriesapp.ui.theme.TEXT_SIZE_18sp
 
 @Composable
 fun CartScreen(
@@ -27,7 +30,7 @@ fun CartScreen(
         Text(
             modifier = Modifier
                 .align(Alignment.CenterHorizontally)
-                .padding(top = DIMENS_8dp),
+                .padding(top = DIMENS_16dp),
             text = stringResource(R.string.my_cart),
             fontFamily = GilroyFontFamily,
             fontWeight = FontWeight.Bold,
@@ -38,7 +41,10 @@ fun CartScreen(
         Spacer(modifier = Modifier.height(DIMENS_16dp))
 
         ListContentCart(
-            cartProducts = productCartList
+            cartProducts = productCartList,
+            onClickDeleteCart = { productItem ->
+                cartViewModel.deleteCart(productItem.copy(isCart = false))
+            }
         )
     }
 }

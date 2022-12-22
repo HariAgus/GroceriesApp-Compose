@@ -15,7 +15,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DetailViewModel @Inject constructor(
-    private val useCase: UseCases,
+    private val useCases: UseCases,
     saveStatedHandle: SavedStateHandle
 ) : ViewModel() {
 
@@ -25,8 +25,13 @@ class DetailViewModel @Inject constructor(
     init {
         viewModelScope.launch(Dispatchers.IO) {
             val productId = saveStatedHandle.get<Int>(PRODUCT_ARGUMENT_KEY) ?: 0
-            _selectedProduct.value = useCase.getSelectedProductUseCase.invoke(productId = productId)
+            _selectedProduct.value =
+                useCases.getSelectedProductUseCase.invoke(productId = productId)
         }
+    }
+
+    fun addCart(productItem: ProductItem) = viewModelScope.launch {
+        useCases.addCartUseCase.invoke(productItem)
     }
 
 }

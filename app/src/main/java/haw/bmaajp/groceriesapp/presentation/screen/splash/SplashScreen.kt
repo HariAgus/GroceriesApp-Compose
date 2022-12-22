@@ -54,8 +54,8 @@ fun SplashScreen(
 
 @Composable
 fun Splash(
-    scale: Float,
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    scale: Float
 ) {
     Box(
         modifier = modifier

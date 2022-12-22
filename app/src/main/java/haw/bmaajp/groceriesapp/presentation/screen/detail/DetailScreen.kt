@@ -16,6 +16,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -26,12 +27,14 @@ import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.presentation.common.SpacerDividerContent
 import haw.bmaajp.groceriesapp.presentation.component.RatingBar
 import haw.bmaajp.groceriesapp.ui.theme.*
+import haw.bmaajp.groceriesapp.utils.showToastShort
 
 @Composable
 fun DetailScreen(
     modifier: Modifier = Modifier,
     detailViewModel: DetailViewModel = hiltViewModel(),
 ) {
+    val mContext = LocalContext.current
     val selectedProduct by detailViewModel.selectedProduct.collectAsState()
 
     Scaffold { padding ->
@@ -44,17 +47,23 @@ fun DetailScreen(
             ) {
                 selectedProduct?.let { productItem ->
                     DetailContentImageHeader(productItem = productItem)
-                }
 
-                Spacer(modifier = Modifier.height(DIMENS_24dp))
+                    Spacer(modifier = Modifier.height(DIMENS_24dp))
 
-                selectedProduct?.let { productItem ->
                     DetailContentDescription(productItem = productItem)
                 }
             }
 
             Column {
-                DetailButtonAddCart()
+                selectedProduct?.let {
+                    DetailButtonAddCart(
+                        productItem = it,
+                        onClickToCart = { productItem ->
+                            mContext.showToastShort("Success Add To Cart ${productItem.title}")
+                            detailViewModel.addCart(productItem.copy(isCart = true))
+                        }
+                    )
+                }
             }
         }
     }
@@ -81,10 +90,11 @@ fun DetailContentImageHeader(
 
 @Composable
 fun DetailContentDescription(
+    modifier: Modifier = Modifier,
     productItem: ProductItem
 ) {
     Column(
-        modifier = Modifier.padding(start = DIMENS_16dp, end = DIMENS_16dp)
+        modifier = modifier.padding(start = DIMENS_16dp, end = DIMENS_16dp)
     ) {
         Row(
             modifier = Modifier.fillMaxWidth()
@@ -221,14 +231,18 @@ fun DetailContentDescription(
 }
 
 @Composable
-fun DetailButtonAddCart() {
+fun DetailButtonAddCart(
+    modifier: Modifier = Modifier,
+    productItem: ProductItem,
+    onClickToCart: (ProductItem) -> Unit
+) {
     Button(
         shape = RoundedCornerShape(DIMENS_24dp),
         colors = ButtonDefaults.buttonColors(backgroundColor = Green),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .padding(DIMENS_16dp),
-        onClick = { /*TODO*/ }
+        onClick = { onClickToCart.invoke(productItem) }
     ) {
         Text(
             text = stringResource(R.string.add_to_basket),

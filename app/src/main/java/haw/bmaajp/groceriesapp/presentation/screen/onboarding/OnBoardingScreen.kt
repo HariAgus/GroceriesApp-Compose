@@ -25,11 +25,12 @@ import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
 fun OnBoardingScreen(
+    modifier: Modifier = Modifier,
     navController: NavHostController,
     onBoardingViewModel: OnBoardingViewModel = hiltViewModel()
 ) {
     OnBoarding(
-        modifier = Modifier.fillMaxSize(),
+        modifier = modifier.fillMaxSize(),
         onClick = {
             navController.popBackStack()
             navController.navigate(Graph.MAIN)

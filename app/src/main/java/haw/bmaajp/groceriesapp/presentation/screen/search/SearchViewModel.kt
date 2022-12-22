@@ -1,4 +1,4 @@
-package haw.bmaajp.groceriesapp.presentation.screen.home
+package haw.bmaajp.groceriesapp.presentation.screen.search
 
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
@@ -13,26 +13,26 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class HomeViewModel @Inject constructor(
+class SearchViewModel @Inject constructor(
     private val useCases: UseCases
 ) : ViewModel() {
 
     private val _searchQuery = mutableStateOf("")
     val searchQuery = _searchQuery
 
-    private val _productList = MutableStateFlow<List<ProductItem>>(emptyList())
-    val productList = _productList.asStateFlow()
+    private val _searchProductList = MutableStateFlow<List<ProductItem>>(emptyList())
+    val searchProductList = _searchProductList.asStateFlow()
 
-    init {
-        viewModelScope.launch(Dispatchers.IO) {
-            useCases.getAllProductUseCase.invoke().collect { value ->
-                _productList.value = value
-            }
-        }
+    fun updateSearchQuery(query: String) {
+        _searchQuery.value = query
     }
 
-    fun addCart(productItem: ProductItem) = viewModelScope.launch {
-        useCases.addCartUseCase.invoke(productItem)
+    fun searchProduct(query: String) {
+        viewModelScope.launch(Dispatchers.IO) {
+            useCases.searchProductUseCase.invoke(query).collect { values ->
+                _searchProductList.value = values
+            }
+        }
     }
 
 }

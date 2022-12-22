@@ -4,8 +4,6 @@ import haw.bmaajp.groceriesapp.domain.model.ProductItem
 import haw.bmaajp.groceriesapp.domain.repository.LocalDataSource
 import haw.bmaajp.groceriesapp.domain.repository.OnBoardingOperations
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.asFlow
-import kotlinx.coroutines.flow.collect
 import javax.inject.Inject
 
 class Repository @Inject constructor(
@@ -33,5 +31,7 @@ class Repository @Inject constructor(
     suspend fun addCart(productItem: ProductItem) = localDataSource.addCart(productItem)
 
     suspend fun deleteCart(productItem: ProductItem) = localDataSource.deleteCart(productItem)
+
+    fun searchProduct(query: String): Flow<List<ProductItem>> = localDataSource.searchProduct(query)
 
 }

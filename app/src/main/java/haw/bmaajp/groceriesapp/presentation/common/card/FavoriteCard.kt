@@ -1,4 +1,4 @@
-package haw.bmaajp.groceriesapp.presentation.common
+package haw.bmaajp.groceriesapp.presentation.common.card
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -22,8 +22,8 @@ import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
 fun FavoriteCard(
+    modifier: Modifier = Modifier,
     productItem: ProductItem,
-    modifier: Modifier = Modifier
 ) {
     Column(
         modifier = modifier
@@ -93,7 +93,7 @@ fun FavoriteCard(
 @Composable
 fun FavoriteCardPreview() {
     FavoriteCard(
-        ProductItem(
+        productItem = ProductItem(
             id = 1,
             title = "Organic Bananas",
             description = "",

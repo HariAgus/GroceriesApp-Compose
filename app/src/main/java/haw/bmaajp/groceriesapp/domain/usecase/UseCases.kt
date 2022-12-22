@@ -8,6 +8,7 @@ import haw.bmaajp.groceriesapp.domain.usecase.getselectedproduct.GetSelectedProd
 import haw.bmaajp.groceriesapp.domain.usecase.readonboarding.ReadOnBoardingUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.saveonboarding.SaveOnBoardingUseCase
 import haw.bmaajp.groceriesapp.domain.usecase.saveproductusecase.InsertProductsUseCase
+import haw.bmaajp.groceriesapp.domain.usecase.searchproductusecase.SearchProductUseCase
 
 data class UseCases(
     val saveOnBoardingUseCase: SaveOnBoardingUseCase,
@@ -18,4 +19,5 @@ data class UseCases(
     val getAllCartUseCase: GetAllCartUseCase,
     val addCartUseCase: AddCartUseCase,
     val deleteCart: DeleteCartUseCase,
+    val searchProductUseCase: SearchProductUseCase
 )

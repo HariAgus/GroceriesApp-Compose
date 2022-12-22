@@ -22,11 +22,13 @@ import haw.bmaajp.groceriesapp.presentation.common.content.ListContentAbout
 import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
-fun AboutScreen() {
+fun AboutScreen(
+    modifier: Modifier = Modifier
+) {
     val activity = LocalContext.current as Activity
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .padding(top = DIMENS_24dp)
             .fillMaxSize()
     ) {
@@ -36,9 +38,7 @@ fun AboutScreen() {
 
         Spacer(modifier = Modifier.height(DIMENS_32dp))
 
-        ButtonLogout(onClick = {
-            activity.finish()
-        })
+        ButtonLogout { activity.finish() }
 
     }
 }

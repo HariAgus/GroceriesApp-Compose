@@ -1,6 +1,6 @@
 package haw.bmaajp.groceriesapp.presentation.screen.home
 
-import android.widget.Toast
+import android.content.Context
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
@@ -24,29 +24,40 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.google.accompanist.pager.ExperimentalPagerApi
 import haw.bmaajp.groceriesapp.R
+import haw.bmaajp.groceriesapp.domain.model.ProductItem
+import haw.bmaajp.groceriesapp.navigation.screen.Screen
 import haw.bmaajp.groceriesapp.presentation.common.content.ListContentProduct
 import haw.bmaajp.groceriesapp.presentation.component.SearchViewBar
 import haw.bmaajp.groceriesapp.presentation.component.SliderBanner
 import haw.bmaajp.groceriesapp.ui.theme.*
+import haw.bmaajp.groceriesapp.utils.showToastShort
 
 @ExperimentalPagerApi
 @Composable
 fun HomeScreen(
+    modifier: Modifier = Modifier,
     navController: NavHostController,
     homeViewModel: HomeViewModel = hiltViewModel()
 ) {
     val mContext = LocalContext.current
+    val searchQuery by homeViewModel.searchQuery
     val allProducts by homeViewModel.productList.collectAsState()
 
     Scaffold { padding ->
         Column(
-            modifier = Modifier
+            modifier = modifier
                 .verticalScroll(rememberScrollState())
                 .padding(padding)
         ) {
             HeaderLocationHome()
 
-            SearchViewBar()
+            SearchViewBar(
+                hint = stringResource(id = R.string.search_store),
+                query = searchQuery,
+                onValueChange = {
+                    if (it.isNotEmpty()) navController.navigate(Screen.Search.route)
+                }
+            )
 
             SliderBanner()
 
@@ -55,12 +66,7 @@ fun HomeScreen(
                 products = allProducts,
                 navController = navController,
                 onClickToCart = { productItem ->
-                    Toast.makeText(
-                        mContext,
-                        "Success To Cart ${productItem.title}",
-                        Toast.LENGTH_SHORT
-                    ).show()
-                    homeViewModel.addCart(productItem.copy(isCart = true))
+                    clickToCart(mContext, productItem, homeViewModel)
                 }
             )
 
@@ -68,10 +74,10 @@ fun HomeScreen(
 
             ListContentProduct(
                 title = stringResource(id = R.string.best_selling),
-                products = allProducts,
+                products = allProducts.sortedByDescending { it.id },
                 navController = navController,
                 onClickToCart = { productItem ->
-
+                    clickToCart(mContext, productItem, homeViewModel)
                 }
             )
         }
@@ -79,9 +85,11 @@ fun HomeScreen(
 }
 
 @Composable
-fun HeaderLocationHome() {
+fun HeaderLocationHome(
+    modifier: Modifier = Modifier
+) {
     Column(
-        modifier = Modifier.fillMaxWidth(),
+        modifier = modifier.fillMaxWidth(),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Spacer(modifier = Modifier.height(DIMENS_24dp))
@@ -113,6 +121,11 @@ fun HeaderLocationHome() {
             )
         }
     }
+}
+
+fun clickToCart(context: Context, productItem: ProductItem, viewModel: HomeViewModel) {
+    context.showToastShort("Success Add To Cart ${productItem.title}")
+    viewModel.addCart(productItem.copy(isCart = true))
 }
 
 @Preview(showBackground = true)

@@ -21,8 +21,8 @@ import haw.bmaajp.groceriesapp.ui.theme.*
 
 @Composable
 fun CategoryCard(
+    modifier: Modifier = Modifier,
     categoryItem: CategoryItem,
-    modifier: Modifier = Modifier
 ) {
     Card(
         modifier = modifier.height(DIMENS_174dp),
@@ -61,7 +61,7 @@ fun CategoryCard(
 @Composable
 fun CategoryCardPreview() {
     CategoryCard(
-        CategoryItem(
+        categoryItem = CategoryItem(
             title = "Frash Fruits\n" + "& Vegetable",
             image = R.drawable.category2,
             background = BackgroundCategory3
