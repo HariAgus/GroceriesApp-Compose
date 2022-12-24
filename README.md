@@ -42,7 +42,6 @@ Clone or Download and Open it into Android Studio or other IDE
 - Room Database
 - Clean Architecture (data, domain, layer)
 - Clean Code
-- 
 
 ## Dependencies
 - [Compose UI](https://developer.android.com/jetpack/androidx/releases/compose-ui)
