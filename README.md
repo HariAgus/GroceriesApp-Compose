@@ -18,3 +18,19 @@
 <p align="center">
   <img src="assets/cover_banner.png"/>
 </p>
+
+## Introduction
+<p>
+This project is a requirement to pass the BMAAJC class at coding.com. This project uses jetpack compose technology,  in short jetpack Compose is Android’s recommended modern toolkit for building native UI. It simplifies and accelerates UI development on Android. Quickly bring your app to life with less code, powerful tools, and intuitive Kotlin APIs.
+
+## Tech Stack
+- MVVM (Model View View Model)
+- Room Database
+- Clean Architecture (data, domain, layer)
+- Clean Code
+
+## Dependencies
+- [Dagger-Hilt](https://developer.android.com/training/dependency-injection/hilt-android)
+- [Room Database](https://developer.android.com/training/data-storage/room)
+- [Accompanist](https://google.github.io/accompanist)
+- [Data Store](https://developer.android.com/topic/libraries/architecture/datastore)
