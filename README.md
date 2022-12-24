@@ -19,9 +19,22 @@
   <img src="assets/cover_banner.png"/>
 </p>
 
+######  *Thank you for making this design
+
 ## Introduction
 <p>
 This project is a requirement to pass the BMAAJC class at coding.com. This project uses jetpack compose technology,  in short jetpack Compose is Android’s recommended modern toolkit for building native UI. It simplifies and accelerates UI development on Android. Quickly bring your app to life with less code, powerful tools, and intuitive Kotlin APIs.
+
+<p>
+
+## Installation
+
+Clone or Download and Open it into Android Studio or other IDE
+```
+    https://https://github.com/HariAgus/GroceriesApp-Compose.git    
+```
+
+<p>
 
 ## Tech Stack
 - MVVM (Model View View Model)
@@ -34,3 +47,5 @@ This project is a requirement to pass the BMAAJC class at coding.com. This proje
 - [Room Database](https://developer.android.com/training/data-storage/room)
 - [Accompanist](https://google.github.io/accompanist)
 - [Data Store](https://developer.android.com/topic/libraries/architecture/datastore)
+
+
