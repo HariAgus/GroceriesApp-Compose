@@ -1,0 +1,54 @@
+name: Android CD 
+on:
+  push:
+     branches: [ "master" ]
+  pull_request:
+     branches: [ "master" ]
+     types: [opened, synchronize, reopened]
+  workflow_dispatch:
+  
+
+jobs:
+  package:
+    name: Generate APK
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Java JDK
+        uses: actions/setup-java@v3.8.0
+        with:
+          java-version: 11
+          distribution: 'temurin'
+      - name: Grant Permission to Execute
+        run: chmod +x gradlew
+      - name: Build debug APK
+        run: bash ./gradlew assembleDebug --stacktrace
+      - name: Upload APK to Github Artifacts
+        uses: actions/upload-artifact@v3.1.1
+        with:
+          name: app
+          path: app/build/outputs/apk/debug/app-debug.apk
+  
+  delevery-on-telegram:
+    name: Send Results on Telegram
+    needs: [package]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Apk Stored Artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: app
+
+      - name: send Apk on telegram message on push
+        uses: appleboy/telegram-action@master
+        with:
+          to: "1767844955"
+          token: "5915457647:AAGjdQ2IfM6SWg_iKYgIXuRVsEjA-WIJOBs"
+          message: |
+            Hi Guys,
+            ${{ github.actor }} created commit:
+            Commit message: ${{ github.event.commits[0].message }}
+            Repository: ${{ github.repository }}
+            See changes: https://github.com/${{ github.repository }}/commit/${{github.sha}}
+            Created By @JahidHasanCo
+          document: app-debug.apk
