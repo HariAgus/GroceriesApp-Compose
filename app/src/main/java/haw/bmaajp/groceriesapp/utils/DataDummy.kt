@@ -116,7 +116,7 @@ object DataDummy {
     fun generateDummyCategories(): List<CategoryItem> {
         return listOf(
             CategoryItem(
-                title = "Frash Fruits\n" + "& Vegetable",
+                title = "Fresh Fruits\n" + "& Vegetable",
                 image = R.drawable.category1,
                 background = BackgroundCategory1
             ),
