@@ -245,7 +245,7 @@ fun DetailButtonAddCart(
         onClick = { onClickToCart.invoke(productItem) }
     ) {
         Text(
-            text = stringResource(R.string.add_to_basket),
+            text = stringResource(R.string.add_to_cart),
             fontFamily = GilroyFontFamily,
             fontWeight = FontWeight.SemiBold,
             fontSize = TEXT_SIZE_18sp,
