@@ -20,7 +20,7 @@
 
 ## Introduction
 <p>
-This project is a requirement to pass the BMAAJC class at coding.com. This project uses jetpack compose technology,  in short jetpack Compose is Android’s recommended modern toolkit for building native UI. It simplifies and accelerates UI development on Android. Quickly bring your app to life with less code, powerful tools, and intuitive Kotlin APIs.
+This project uses jetpack compose technology,  in short jetpack Compose is Android’s recommended modern toolkit for building native UI. It simplifies and accelerates UI development on Android. Quickly bring your app to life with less code, powerful tools, and intuitive Kotlin APIs.
 
 <p>
 
