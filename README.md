@@ -35,7 +35,9 @@ Clone or Download and Open it into Android Studio or other IDE
 | Splash Screen  | On Boarding Screen | Home Screen | Detail Screen |
 | ------------- | ------------- | ------------- | ------------- |
 | <img src="assets/splash_page.png"/>  | <img src="assets/on_boarding_page.png"/>  | <img src="assets/home_page.png"/> | <img src="assets/detail_page.PNG"/> |
+
 | Category Screen  | Cart Screen | Profile Screen | Empty Screen |
+| ------------- | ------------- | ------------- | ------------- |
 | <img src="assets/category_page.png"/>  | <img src="assets/cart_page.png"/>  | <img src="assets/profile_page.png"/> | <img src="assets/empty_page.png"/> |
 
 <p>
