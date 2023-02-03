@@ -34,11 +34,11 @@ Clone or Download and Open it into Android Studio or other IDE
 # Preview App
 | Splash Screen  | On Boarding Screen | Home Screen | Detail Screen |
 | ------------- | ------------- | ------------- | ------------- |
-| <img src="assets/splash_page.png"/>  | <img src="assets/on_boarding_page.png"/>  | <img src="assets/home_page.png"/> | <img src="assets/detail_page.PNG"/> |
+| <img src="assets/splash_page.png" height=350 width=1600/>  | <img src="assets/on_boarding_page.png" height=350 width=1600/>  | <img src="assets/home_page.png" height=350 width=1600/> | <img src="assets/detail_page.PNG" height=350 width=1600/> |
 
 | Category Screen  | Cart Screen | Profile Screen | Empty Screen |
 | ------------- | ------------- | ------------- | ------------- |
-| <img src="assets/category_page.png"/>  | <img src="assets/cart_page.png"/>  | <img src="assets/profile_page.png"/> | <img src="assets/empty_page.png"/> |
+| <img src="assets/category_page.png" height=350 width=1600/>  | <img src="assets/cart_page.png" height=350 width=1600/>  | <img src="assets/profile_page.png" height=350 width=1600/> | <img src="assets/empty_page.png" height=350 width=1600/> |
 
 <p>
 
