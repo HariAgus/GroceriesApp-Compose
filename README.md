@@ -59,6 +59,4 @@ Clone or Download and Open it into Android Studio or other IDE
 
 <p>
 
-# NB : if this is useful, please pray for me with sincerity
-
 
